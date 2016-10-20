@@ -17,9 +17,9 @@
 	});
 }
 
-	// 定义
+	// 开发者自定义组件
 	var myComponent1 = Vue.extend({
-	  	template: '<div id="com1">A custom component1{{x}}：{{name}}+{{code}}</div>',
+	  	template: '<div id="com1" style="border:1px solid blue">A custom component1{{x}}：{{name}}+{{code}}</div>',
   		data : function(){
   			return {
 	  			name:"组件1",
@@ -32,12 +32,12 @@
 	Vue.component('my-component1', myComponent1)
 
 
-
+	// 开发者运行时动态添加自定义组件
 	var my2 = document.createElement('my-component2')
 	document.getElementById("mycomponents").appendChild(my2);
 	// 注册
 	Vue.component('my-component2', Vue.extend({
-	  		template: '<div id="com2">component2:{{name}}-{{code}}</div>',
+	  		template: '<div style="border:1px solid red" id="com2">动态创建自定义组件:<div>姓名:{{name}}</div><div>编码:{{code}}</div></div>',
 	  		data:function(){
 	  			return {
 		  			name:"李四",
@@ -52,7 +52,7 @@
 	document.getElementById("mycomponents").appendChild(my3);
 	// 注册
 	Vue.component('my-component3', Vue.extend({
-	  		template: '<div id="com3">component3 {{x}}:{{name}}-{{code}}</div>',
+	  		template: '<div id="com3"  style="border:1px solid blue">component3 {{x}}:{{name}}-{{code}}</div>',
 		
 	  		el:function(){return "#mycomponents"}
 		})
