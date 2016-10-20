@@ -47,7 +47,7 @@
 		})
 	)
 
-
+/*
 	var my3 = document.createElement('my-component3')
 	document.getElementById("mycomponents").appendChild(my3);
 	// 注册
@@ -57,7 +57,7 @@
 	  		el:function(){return "#mycomponents"}
 		})
 	)
-
+*/
 	// 创建根实例
 	new Vue({
 	  	el: '#mycomponents',
@@ -122,7 +122,51 @@
 	workbench.createComponent("um-header", {title:"iuap mobile xxfff"});
 
 
-
+	workbench.createComponent("um-APPManager",{
+		el:"#mycomponents2",
+		data:[{
+			"label" : "建差",
+			"img" : "img/mt_food.png",
+			"url" : ""
+		},
+		{
+			"label" : "手机",
+			"img" : "img/mt_hotal.png",
+			"url" : ""
+		},
+		{
+			"label" : "电脑",
+			"img" : "img/mt_ktv.png",
+			"url" : ""
+		},
+		{
+			"label" : "平板",
+			"img" : "img/mt_money.png",
+			"url" : ""
+		},
+		{
+			"label" : "用友",
+			"img" : "img/mt_mv.png",
+			"url" : ""
+		},
+		{
+			"label" : "网络",
+			"img" : "img/mt_new.png",
+			"url" : ""
+		},
+		{
+			"label" : "科技",
+			"img" : "img/mt_xiaochi.png",
+			"url" : ""
+		},
+		{
+			"label" : "苹果",
+			"img" : "img/mt_you.png",
+			"url" : ""
+		}],
+		colum : 4
+	});
+			
 	workbench.createComponent("um-footer", {
 		data: [{title:"xxx", iconfont:"ti-comments"},
 			{title:"日程q", iconfont:"ti-notepad"},
@@ -130,17 +174,16 @@
 			{title:"我", iconfont:"ti-user"}
 		]}
 	);
-	/*
-	workbench.createComponent("um-APPManager", {
-				data : [{label:"审批",icon:'ss.png'},{label:"新闻",icon:'xw.png'}],
-				colum: "4"
-	});
-*/
+	
+	
 
 
 
+	new Vue({
+		el: 'body'
+	})
 
-
+/*
 	new Vue({
 		el: 'body',
 		data: {
@@ -157,4 +200,6 @@
 			  template: '<div>A custom component Settings ++ {{name}}!</div>'
 			}
 	  	}
-	})
+	})*/
+	
+	

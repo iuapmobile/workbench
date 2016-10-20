@@ -7,10 +7,12 @@
 
 	<link rel="stylesheet" href="css/font-icons.css">
 	<link rel="stylesheet" href="css/iuapmobile.um.css">
-
+    <link rel="stylesheet" href="css/main.css">
 	<script src="js/Frameworks/iuapmobile.frameworks.core.js" ></script>
 	<script src="js/summer.js" ></script>
 	<script src="js/jquery.min.js" ></script>
+	<script src="js/Sortable.js" ></script>
+	<script src="js/APPManager.js" ></script>
 	<script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 </head>
 <body id="body">
@@ -23,9 +25,15 @@
 
 			<div id="mycomponents">
 			  <my-component1 x="xxxxxxxxxxxxxxx"></my-component1>
+			  
 			</div>
-
-
+			<div id="mycomponents2">
+			</div>
+            <div id="app0">
+              <um-appmanager name="pops"></um-appmanager>
+            </div>
+       
+            
 		    <div id="app">
 			  <p>简单绑定字段{{ info }}</p>
 			   <input v-model="info">

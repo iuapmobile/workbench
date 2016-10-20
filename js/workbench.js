@@ -22,7 +22,6 @@ var workbench = {
 			Vue.component('um-header', header);
 		}else if(type == "um-footer"){
 		    // 定义
-
 			var footer = Vue.extend({
 			  template: '<div class="um-footer">'
 						+'<div class="um-tabbar-foot">'
@@ -56,16 +55,40 @@ var workbench = {
 			// 注册
 			Vue.component('um-footer', footer);
 		}else if(type == 'um-APPManager'){
-/*
+			
+			var v = new APPManager(settings.el,settings);
+			
+			
+			/*
 			var app = new APPManager("#div2", {
 				data : [{label:"审批",icon:'ss.png'},{label:"新闻",icon:'xw.png'}],
 				colum: "4"
+			});*/
+			/*
+			// 定义
+			var app = Vue.extend({
+			  	template: '<ul>'
+				    +'<li v-for="todo in todos">'
+				      +'{{ todo.text }}'
+				    
+				    +'</li>'
+			  	+'</ul>',
+			  	
+				data: function(){
+			  		return{
+			    		info: 'Hello iuap mobile!',
+			  	  		todos:[{text:"aa"},{text:"bb"},{text:"cc"},{text:"dd"}]
+			  		}
+			  	}
+				
 			});
-			app.setIcon();
-			app.setPadding();
-*/
+			// 注册
+			Vue.component('um-appmanager', app);
+			*/
 			
-
+			
+			  	
+			
 		}
 	}
 	
