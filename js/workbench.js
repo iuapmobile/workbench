@@ -55,17 +55,8 @@ var workbench = {
 			// 注册
 			Vue.component('um-footer', footer);
 		}else if(type == 'um-APPManager'){
-			
 			var v = new APPManager(settings.el,settings);
-			
-			
 			/*
-			var app = new APPManager("#div2", {
-				data : [{label:"审批",icon:'ss.png'},{label:"新闻",icon:'xw.png'}],
-				colum: "4"
-			});*/
-			/*
-			// 定义
 			var app = Vue.extend({
 			  	template: '<ul>'
 				    +'<li v-for="todo in todos">'
@@ -85,10 +76,6 @@ var workbench = {
 			// 注册
 			Vue.component('um-appmanager', app);
 			*/
-			
-			
-			  	
-			
 		}
 	}
 	

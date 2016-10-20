@@ -21,7 +21,7 @@ APPManager.prototype = {
 		this.setCss();
 	},
 	create : function(){
-		var sortableTxtL = "<ul class='clearfix' id='sortable'>";
+		var sortableTxtL = "<ul class='clearfix' id='um-sortable'>";
 		var sortableTxtR = "</ul>";
 		var lis = "";
 		var data = this.arr;
@@ -31,14 +31,17 @@ APPManager.prototype = {
 		var sortableTemp = sortableTxtL + lis + sortableTxtR;
 		$(this.id).append(sortableTemp);
 		this.runn();
+		this.close();
 		this.remove();
 	},
 	runn : function(){
-		var el = document.getElementById("sortable");
+		var el = document.getElementById("um-sortable");
 		Sortable.create(el);
 	},
 	close : function(){
-		$(".small").removeClass("dragli");
+		$(document).on("click",function(){
+			$(".small").removeClass("dragli");
+		});
 	},
 	remove : function(){
 		$(".delete").on("touchstart",function(){

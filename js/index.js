@@ -1,25 +1,11 @@
 ﻿summerready = function() {
 	// here is your code...
-	var y = $summer.offset($summer.byId('header')).h;
-	//var width = $summer.offset(document.getElementsByTagName("body")[0]).w;
-	//var height = $summer.offset($summer.byId('main')).h;
 
-	summer.openFrame({
-		name : 'main',
-		url : 'html/main.html',
-		bounces : true,
-		rect : {
-			x : 0,
-			y : y,
-			w : 'auto',
-			h : 'auto'
-		}
-	});
 }
 
 	// 开发者自定义组件
 	var myComponent1 = Vue.extend({
-	  	template: '<div id="com1" style="border:1px solid blue">A custom component1{{x}}：{{name}}+{{code}}</div>',
+	  	template: '<div id="com1" style="border:1px solid blue" class="mt10 mb10 p10">A custom component1{{x}}：{{name}}+{{code}}</div>',
   		data : function(){
   			return {
 	  			name:"组件1",
@@ -37,9 +23,9 @@
 	document.getElementById("mycomponents").appendChild(my2);
 	// 注册
 	Vue.component('my-component2', Vue.extend({
-	  		template: '<div style="border:1px solid red" id="com2">动态创建自定义组件:<div>姓名:{{name}}</div><div>编码:{{code}}</div></div>',
+	  		template: '<div style="border:1px solid red" id="com2" class="mt10 mb10 p10">动态创建自定义组件:<div>姓名:{{name}}</div><div>编码:{{code}}</div></div>',
 	  		data:function(){
-	  			return {
+	  			return { 
 		  			name:"李四",
 		  			code:"UF1002"
 		  		}
@@ -52,7 +38,7 @@
 	document.getElementById("mycomponents").appendChild(my3);
 	// 注册
 	Vue.component('my-component3', Vue.extend({
-	  		template: '<div id="com3"  style="border:1px solid blue">component3 {{x}}:{{name}}-{{code}}</div>',
+	  		template: '<div id="com3"  style="border:1px solid green" class="mt10 mb10 p10">component3 {{x}}:{{name}}-{{code}}</div>',
 		
 	  		el:function(){return "#mycomponents"}
 		})
@@ -175,15 +161,7 @@
 		]}
 	);
 	
-	
 
-
-
-	new Vue({
-		el: 'body'
-	})
-
-/*
 	new Vue({
 		el: 'body',
 		data: {
@@ -200,6 +178,6 @@
 			  template: '<div>A custom component Settings ++ {{name}}!</div>'
 			}
 	  	}
-	})*/
+	})
 	
 	

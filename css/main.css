@@ -1,11 +1,11 @@
-#sortable .small{
+#um-sortable .small{
 	width:25%;
 	float:left;
 	position:relative;
 	padding:10px;
 	text-align:center;
 }
-#sortable .delete {
+#um-sortable .delete {
     display: none;
     top: 4px;
     left: 20px;
@@ -15,6 +15,6 @@
 	background:url(../img/close.png) no-repeat;
 	background-size:16px 16px;
 }
-#sortable .dragli .delete{
+#um-sortable .dragli .delete{
 	display: block;
 }
