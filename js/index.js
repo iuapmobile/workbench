@@ -63,13 +63,13 @@
     
 
 
-	workbench.createComponent("um-header", {title:"iuap mobile V3.0"});
+	workbench.createComponent("um-header", {title:"iuapmobile 3.0"});
 
 	workbench.createComponent("um-footer", {
-		data: [{title:"xxx", iconfont:"ti-comments"},
+		data: [{title:"消息", iconfont:"ti-comments"},
 			{title:"日程q", iconfont:"ti-notepad"},
 			{title:"通讯录", iconfont:"ti-agenda"},
-			{title:"我", iconfont:"ti-user"}
+			{title:"设置", iconfont:"ti-user"}
 		]}
 	);
 	/*
@@ -148,12 +148,12 @@
 
 
 
-summerready = function() {
-	// here is your code...
-	var y = $summer.offset($summer.byId('header')).h;
+summerready = function(){
+    // here is your code...	
+    var y = $summer.offset($summer.byId('header')).h;
     var width = $summer.offset(document.getElementsByTagName("body")[0]).w;		
     var height = $summer.offset($summer.byId('main')).h;
-	
+
     summer.openFrame({
         name: 'main',
         url: 'html/main.html',
@@ -165,5 +165,4 @@ summerready = function() {
             h: height
         }
     });
-	
 }
