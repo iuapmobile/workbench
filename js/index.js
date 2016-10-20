@@ -1,30 +1,12 @@
-﻿summerready = function() {
-	// here is your code...
-	var y = $summer.offset($summer.byId('header')).h;
-	//var width = $summer.offset(document.getElementsByTagName("body")[0]).w;
-	//var height = $summer.offset($summer.byId('main')).h;
-
-	summer.openFrame({
-		name : 'main',
-		url : 'html/main.html',
-		bounces : true,
-		rect : {
-			x : 0,
-			y : y,
-			w : 'auto',
-			h : 'auto'
-		}
-	});
-}
-
-	// 开发者自定义组件
+﻿
+	//1、 开发者自定义组件
 	var myComponent1 = Vue.extend({
-	  	template: '<div id="com1" style="border:1px solid blue" class="mt10 mb10 p10">A custom component1{{x}}：{{name}}+{{code}}</div>',
+	  	template: '<div id="com1" style="border:1px solid blue" class="mt10 mb10 p10">A custom component-{{x}}：{{name}}+{{code}}</div>',
   		data : function(){
   			return {
-	  			name:"组件1",
-	  			code:"iuap Component 1001",
-	  			x:"bbb"
+	  			name:"iuap Component",
+	  			code:"C1001",
+	  			x:"自定义"
 	  		}
 		}
 	});
@@ -32,7 +14,7 @@
 	Vue.component('my-component1', myComponent1)
 
 
-	// 开发者运行时动态添加自定义组件
+	//2、 开发者运行时动态添加自定义组件
 	var my2 = document.createElement('my-component2')
 	document.getElementById("mycomponents").appendChild(my2);
 	// 注册
@@ -47,7 +29,7 @@
 		})
 	)
 
-
+/*
 	var my3 = document.createElement('my-component3')
 	document.getElementById("mycomponents").appendChild(my3);
 	// 注册
@@ -57,6 +39,8 @@
 	  		el:function(){return "#mycomponents"}
 		})
 	)
+*/
+/*
 
 	// 创建根实例
 	new Vue({
@@ -68,13 +52,36 @@
 
 	  	}
 	})
+*/
 
 
 
+
+	
+
+
+    
+
+
+	workbench.createComponent("um-header", {title:"iuap mobile V3.0"});
+
+	workbench.createComponent("um-footer", {
+		data: [{title:"xxx", iconfont:"ti-comments"},
+			{title:"日程q", iconfont:"ti-notepad"},
+			{title:"通讯录", iconfont:"ti-agenda"},
+			{title:"我", iconfont:"ti-user"}
+		]}
+	);
+	/*
+	workbench.createComponent("um-APPManager", {
+				data : [{label:"审批",icon:'ss.png'},{label:"新闻",icon:'xw.png'}],
+				colum: "4"
+	});
+*/
 
 
 	new Vue({
-	  	el: '#app',
+	  	el: '#body0',
 	  	data: {
 	    	info: 'Hello iuap mobile!',
 	  	  	todos:[{text:"aa"},{text:"bb"},{text:"cc"},{text:"dd"}]
@@ -116,31 +123,9 @@
 	})
 
 
-    
 
 
-	workbench.createComponent("um-header", {title:"iuap mobile xxfff"});
-
-
-
-	workbench.createComponent("um-footer", {
-		data: [{title:"xxx", iconfont:"ti-comments"},
-			{title:"日程q", iconfont:"ti-notepad"},
-			{title:"通讯录", iconfont:"ti-agenda"},
-			{title:"我", iconfont:"ti-user"}
-		]}
-	);
-	/*
-	workbench.createComponent("um-APPManager", {
-				data : [{label:"审批",icon:'ss.png'},{label:"新闻",icon:'xw.png'}],
-				colum: "4"
-	});
-*/
-
-
-
-
-
+/*
 	new Vue({
 		el: 'body',
 		data: {
@@ -158,3 +143,27 @@
 			}
 	  	}
 	})
+*/
+
+
+
+
+summerready = function() {
+	// here is your code...
+	var y = $summer.offset($summer.byId('header')).h;
+    var width = $summer.offset(document.getElementsByTagName("body")[0]).w;		
+    var height = $summer.offset($summer.byId('main')).h;
+	
+    summer.openFrame({
+        name: 'main',
+        url: 'html/main.html',
+        bounces: true,
+        rect: {
+            x: 0,
+            y: y,
+            w: width,
+            h: height
+        }
+    });
+	
+}
