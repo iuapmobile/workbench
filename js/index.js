@@ -72,6 +72,13 @@
 			{title:"设置", iconfont:"ti-user"}
 		]}
 	);
+	workbench.createComponent("um-applayout", {
+		data: [{title:"美食", img:"./img/mt_food.png"},
+			{title:"电影", img:"./img/mt_mv.png"},
+			{title:"酒店", img:"./img/mt_hotal.png"},
+			{title:"KTV", img:"./img/mt_ktv.png"}
+		]}
+	);
 	/*
 	workbench.createComponent("um-APPManager", {
 				data : [{label:"审批",icon:'ss.png'},{label:"新闻",icon:'xw.png'}],
