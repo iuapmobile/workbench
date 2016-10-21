@@ -106,8 +106,6 @@
 
 
 	workbench.createComponent("um-header", {title:"iuap mobile xxfff"});
-
-
 	workbench.createComponent("um-APPManager",{
 		el:"#mycomponents2",
 		data:[{
@@ -152,6 +150,7 @@
 		}],
 		colum : 4
 	});
+	
 			
 	workbench.createComponent("um-footer", {
 		data: [{title:"xxx", iconfont:"ti-comments"},
