@@ -26,29 +26,29 @@ var workbench = {
 			  template: '<div class="um-footer">'
 						+'<div class="um-tabbar-foot">'
 							+'<a id="item0" href="#" class="um-footerbar-item">'
-								+'<i class="' + settings.data[0].iconfont + ' f20"></i>'
-								+'<div class="um-tabbar-item-text">{{first}}</div>'
+								+'<i class=" {{first.iconfont}}  f20"></i>'
+								+'<div class="um-tabbar-item-text">{{first.title}}</div>'
 							+'</a>'
 							+'<a id="item1" href="#" class="um-footerbar-item"> '
-								+'<i class="' + settings.data[1].iconfont + '  f20"></i>'
-								+'<div class="um-tabbar-item-text">{{second}}</div> '
+								+'<i class=" {{second.iconfont}}  f20"></i>'
+								+'<div class="um-tabbar-item-text">{{second.title}}</div>'
 							+'</a>'
 							+'<a id="item2" href="#" class="um-footerbar-item active">'
-								+'<i class="' + settings.data[2].iconfont + '  f20"></i>'
-								+'<div class="um-tabbar-item-text">{{third}}</div>'
+								+'<i class=" {{third.iconfont}}  f20"></i>'
+								+'<div class="um-tabbar-item-text">{{third.title}}</div>'
 							+'</a>'
 							+'<a id="item3" href="#" class="um-footerbar-item">'
-								+'<i class="' + settings.data[3].iconfont + '  f20"></i>'
-								+'<div class="um-tabbar-item-text">{{forth}}</div>'
+								+'<i class=" {{forth.iconfont}}  f20"></i>'
+								+'<div class="um-tabbar-item-text">{{forth.title}}</div>'
 							+'</a>'
 						+'</div>'
 					+'</div>',
 				data : function(){
 					return {
-						first: settings.data[0].title,
-						second: settings.data[1].title,
-						third: settings.data[2].title,
-						forth: settings.data[3].title
+						first: settings.data[0],
+						second: settings.data[1],
+						third: settings.data[2],
+						forth: settings.data[3]
 					}
 				}
 			});
@@ -56,26 +56,18 @@ var workbench = {
 			Vue.component('um-footer', footer);
 		}else if(type == 'um-APPManager'){
 			var v = new APPManager(settings.el,settings);
-			/*
-			var app = Vue.extend({
-			  	template: '<ul>'
-				    +'<li v-for="todo in todos">'
-				      +'{{ todo.text }}'
-				    
-				    +'</li>'
-			  	+'</ul>',
-			  	
-				data: function(){
-			  		return{
-			    		info: 'Hello iuap mobile!',
-			  	  		todos:[{text:"aa"},{text:"bb"},{text:"cc"},{text:"dd"}]
-			  		}
-			  	}
-				
-			});
-			// 注册
-			Vue.component('um-appmanager', app);
-			*/
+			
+		}else if (type == "um-banner"){
+			var islider = new iSlider({
+    			type: 'pic',
+    			data: settings.data,
+    			dom: document.getElementById("iSlider-wrapper"),
+    			isLooping: true,
+    			animateType: 'default',
+    			isAutoplay: true,
+    			animateTime: 800
+    		});
+    		islider.addDot();
 		}else if(type='um-applayout'){
 			var AppLayout = Vue.extend({
 				template: '<div class="um-grid">'
@@ -83,24 +75,24 @@ var workbench = {
 								 +'<div >'
 									+'<a href="#" class="um-circle um-black">'
 										+'<img src="'+settings.data[0].img+'" width=40 class="um-img-responsive" alt="">'
-										+'<div class="f12 mt5">{{one}}</div>'
+										+'<div  class="f12 mt5">{{one}}</div>'
 									+'</a>'
 								+'</div>' 
 								+'<div>'
 									+'<a href="#" class="um-circle um-black">'
-										+'<img src="'+settings.data[1].img+'" width=40 class="um-img-responsive" alt="">'
+										+'<img src="'+settings.data[0].img+'" width=40 class="um-img-responsive" alt="">'
 										+'<div  class="f12 mt5">{{two}}</div>'
 									+'</a>'
 								+'</div>'
 								+'<div>'
 									+'<a href="#" class="um-circle um-black">'
-										+'<img src="'+settings.data[2].img+'" width=40 class="um-img-responsive" alt="">'
+										+'<img src="'+settings.data[0].img+'" width=40 class="um-img-responsive" alt="">'
 										+'<div  class="f12 mt5">{{three}}</div>'
 									+'</a>'
 								+'</div>'
 								+'<div>'
 									+'<a href="#" class="um-circle um-black">'
-										+'<img src="'+settings.data[3].img+'" width=40 class="um-img-responsive" alt="">'
+										+'<img src="'+settings.data[0].img+'" width=40 class="um-img-responsive" alt="">'
 										+'<div  class="f12 mt5">{{four}}</div>'
 									+'</a>'
 								+'</div>'
