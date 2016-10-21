@@ -76,6 +76,47 @@ var workbench = {
 			// 注册
 			Vue.component('um-appmanager', app);
 			*/
+		}else if(type='um-applayout'){
+			var AppLayout = Vue.extend({
+				template: '<div class="um-grid">'
+							+'<div class="um-grid-row tc">'
+								 +'<div >'
+									+'<a href="#" class="um-circle um-black">'
+										+'<img src="'+settings.data[0].img+'" width=40 class="um-img-responsive" alt="">'
+										+'<div class="f12 mt5">{{one}}</div>'
+									+'</a>'
+								+'</div>' 
+								+'<div>'
+									+'<a href="#" class="um-circle um-black">'
+										+'<img src="'+settings.data[1].img+'" width=40 class="um-img-responsive" alt="">'
+										+'<div  class="f12 mt5">{{two}}</div>'
+									+'</a>'
+								+'</div>'
+								+'<div>'
+									+'<a href="#" class="um-circle um-black">'
+										+'<img src="'+settings.data[2].img+'" width=40 class="um-img-responsive" alt="">'
+										+'<div  class="f12 mt5">{{three}}</div>'
+									+'</a>'
+								+'</div>'
+								+'<div>'
+									+'<a href="#" class="um-circle um-black">'
+										+'<img src="'+settings.data[3].img+'" width=40 class="um-img-responsive" alt="">'
+										+'<div  class="f12 mt5">{{four}}</div>'
+									+'</a>'
+								+'</div>'
+							+'</div>'							 
+                       +'</div>',
+				data: function(){
+			  		return{
+			    		 one:settings.data[0].title,
+						 two:settings.data[1].title,
+						 three:settings.data[2].title,
+						 four:settings.data[3].title,
+			  		}
+			  	}
+			});
+			// 注册
+			Vue.component('um-applayout', AppLayout);
 		}
 	}
 	

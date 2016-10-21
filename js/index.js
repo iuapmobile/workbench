@@ -1,16 +1,12 @@
-﻿summerready = function() {
-	// here is your code...
-
-}
-
-	// 开发者自定义组件
+﻿
+	//1、 开发者自定义组件
 	var myComponent1 = Vue.extend({
-	  	template: '<div id="com1" style="border:1px solid blue" class="mt10 mb10 p10">A custom component1{{x}}：{{name}}+{{code}}</div>',
+	  	template: '<div id="com1" style="border:1px solid blue" class="mt10 mb10 p10">A custom component-{{x}}：{{name}}+{{code}}</div>',
   		data : function(){
   			return {
-	  			name:"组件1",
-	  			code:"iuap Component 1001",
-	  			x:"bbb"
+	  			name:"iuap Component",
+	  			code:"C1001",
+	  			x:"自定义"
 	  		}
 		}
 	});
@@ -18,7 +14,7 @@
 	Vue.component('my-component1', myComponent1)
 
 
-	// 开发者运行时动态添加自定义组件
+	//2、 开发者运行时动态添加自定义组件
 	var my2 = document.createElement('my-component2')
 	document.getElementById("mycomponents").appendChild(my2);
 	// 注册
@@ -44,6 +40,8 @@
 		})
 	)
 */
+/*
+
 	// 创建根实例
 	new Vue({
 	  	el: '#mycomponents',
@@ -54,13 +52,43 @@
 
 	  	}
 	})
+*/
 
 
 
+
+	
+
+
+    
+
+
+	workbench.createComponent("um-header", {title:"iuapmobile 3.0"});
+
+	workbench.createComponent("um-footer", {
+		data: [{title:"消息", iconfont:"ti-comments"},
+			{title:"日程q", iconfont:"ti-notepad"},
+			{title:"通讯录", iconfont:"ti-agenda"},
+			{title:"设置", iconfont:"ti-user"}
+		]}
+	);
+	workbench.createComponent("um-applayout", {
+		data: [{title:"美食", img:"./img/mt_food.png"},
+			{title:"电影", img:"./img/mt_mv.png"},
+			{title:"酒店", img:"./img/mt_hotal.png"},
+			{title:"KTV", img:"./img/mt_ktv.png"}
+		]}
+	);
+	/*
+	workbench.createComponent("um-APPManager", {
+				data : [{label:"审批",icon:'ss.png'},{label:"新闻",icon:'xw.png'}],
+				colum: "4"
+	});
+*/
 
 
 	new Vue({
-	  	el: '#app',
+	  	el: '#body0',
 	  	data: {
 	    	info: 'Hello iuap mobile!',
 	  	  	todos:[{text:"aa"},{text:"bb"},{text:"cc"},{text:"dd"}]
@@ -102,6 +130,7 @@
 	})
 
 
+<<<<<<< HEAD
     
 
 
@@ -160,7 +189,11 @@
 		]}
 	);
 	
+=======
 
+>>>>>>> 442a1086513e73b851cb782596779472089ac34c
+
+/*
 	new Vue({
 		el: 'body',
 		data: {
@@ -178,5 +211,26 @@
 			}
 	  	}
 	})
-	
-	
+*/
+
+
+
+
+summerready = function(){
+    // here is your code...	
+    var y = $summer.offset($summer.byId('header')).h;
+    var width = $summer.offset(document.getElementsByTagName("body")[0]).w;		
+    var height = $summer.offset($summer.byId('main')).h;
+
+    summer.openFrame({
+        name: 'main',
+        url: 'html/main.html',
+        bounces: true,
+        rect: {
+            x: 0,
+            y: y,
+            w: width,
+            h: height
+        }
+    });
+}
