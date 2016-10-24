@@ -102,6 +102,8 @@
 			filter: null,
 			animation: 150,
 			delay : 1000,
+			startTime : 0,
+			endTime : 0,
 			setData: function (dataTransfer, dragEl) {
 				dataTransfer.setData('Text', dragEl.textContent);
 			}
@@ -187,7 +189,7 @@
 				el = this.el,
 				that = this,
 				filter = options.filter;
-
+			options.startTime = new Date().getTime();
 			if (type === 'mousedown' && evt.button !== 0 || options.disabled) {
 				return; // only left button or enabled
 			}
@@ -374,7 +376,7 @@
 					_on(document, 'touchend', _this._onDrop);
 					_on(document, 'touchcancel', _this._onDrop);
 
-				},_this.options.delay)
+				},options.delay)
 				
 				this._loopId = setInterval(this._emulateDragOver, 150);
 			}
@@ -588,6 +590,14 @@
 		},
 
 		_onDrop: function (/**Event*/evt) {
+			this.options.endTime = new Date().getTime();
+			var target = evt.target.parentNode;
+			var url  = target.getAttribute("data-url");
+			var t = target.parentNode;
+			if (target.className == "um-black" && this.options.endTime - this.options.startTime < 800 && !t.classList.contains("dragli") ){
+				
+				window.location = url;
+			}
 			var el = this.el;
 			clearTimeout(this.delayTime)
 			clearInterval(this._loopId);
@@ -1005,3 +1015,53 @@
 	// Export
 	return Sortable;
 });
+/* 调用插件  */
+function APPManager(id,options){
+	this.id = id;
+	this.options = options = ( options || {} );
+	this.arr = options.data || this.arr;
+	this.colum = options.colum || 4;
+	this.moreType = false; 
+	this.init();
+}
+APPManager.prototype = {
+	init : function(){
+		this.create();
+		this.setCss();
+	},
+	create : function(){
+		var sortableTxtL = "<ul class='clearfix' id='um-sortable'>";
+		var more = "<li class='more'></li>";
+		var sortableTxtR = "</ul>";
+		var lis = "";
+		var data = this.arr;
+		for (var i = 0; i < data.length; i++){
+			lis += "<li class='small'><a class='um-black'  data-url = '"+data[i].url+"'><img src='"+data[i].img+"' width=40 /><div class='f12 mt5'>"+data[i].label+"</div></a><a class='delete'></a></li>"
+		}
+		var sortableTemp = sortableTxtL + lis + sortableTxtR;
+		$(this.id).append(sortableTemp);
+		
+		this.runn();
+		this.close();
+		this.remove();
+	},
+	runn : function(){
+		var el = document.getElementById("um-sortable");
+		Sortable.create(el);
+	},
+	close : function(){
+		$(document).on("click",function(){
+			$(".small").removeClass("dragli");
+		});
+	},
+	remove : function(){
+		$(".delete").on("touchstart",function(){
+			$(this).parent().remove();
+			return false;
+		});
+	},
+	setCss : function(){
+		var w = $(this.id).width() / this.colum;
+		$(".small").css("width",w);
+	}
+}
