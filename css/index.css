@@ -143,7 +143,10 @@
 }
 
 /*toDo页面css*/
-
+#toDo .um-header{
+	background-color:white;
+	border-width: 0px;
+}
 #toDo .um-input-search .form-control{
 	margin-left:8%;
 }
