@@ -1,3 +1,4 @@
+
 var workbench = {
 
 	init : function(){
@@ -182,7 +183,7 @@ var workbench = {
 								+'</a>'
 							+'</div>'
 							+'<div class="alist fl um-grid nphoto">'
-								+'<a href="http://www.baidu.com">'
+								+'<a href="#toDo">'
 									+'<img src="img/add.png"/ width=20>'
 								+'</a>'
 							+'</div>'
