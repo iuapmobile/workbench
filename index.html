@@ -1,69 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0, width=device-width"/>
-    <title>定制化工作台</title>
-
-	<link rel="stylesheet" href="css/font-icons.css">
-	<link rel="stylesheet" href="css/iuapmobile.um.css">
-	<link rel="stylesheet" type="text/css" href="css/islider.css">
-    <link rel="stylesheet" href="css/main.css">
-	<script src="js/Frameworks/iuapmobile.frameworks.core.js" ></script>
-	<script src="js/summer.js" ></script>
-	<script src="js/jquery.min.js" ></script>
-	<script src="js/Sortable.js" ></script>
-	<script src="js/islider.js" ></script>
-	<script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
-</head>
-<body id="body0">
-	<div class="um-win" id="index">
-		<!--header组件-->
-		<um-header></um-header>
-        <div id="iSlider-wrapper" class="iSlider-wrapper"></div>
-		<div id="main" class="um-content p15">
-		    
-			<um-applayout></um-applayout>
-
-			<div id="mycomponents">
-			  <my-component1 x="xxxxxxxxxxxxxxx"></my-component1>
-			</div>
-			
-            <div id="mycomponents2">
-            
-            </div>
-
-		    <div id="list0" style="border:1px solid orange;padding:10px">
-			  <p>简单绑定字段=={{ info }}</p>
-			   <input v-model="info">
-			   <p>{{ info }}</p>
-
-			   <!------------------------------------------------------------------>
-
-			   <button v-on:click="add">Add</button>
-			   <button v-on:click="remove">Remove</button>
-			   <ul>
-				    <li v-for="todo in todos">
-				      {{ todo.text }}
-				       <button v-on:click="removeTodo($index)">删除1</button>
-				       <button @click="removeTodo($index)">删除2</button>
-				    </li>
-			  	</ul>
-
-
-			  	<!------------------------------------------------------------------>
-
-
-
-			  	<component :is="currentView">
-					<!-- 组件在 vm.currentview 变化时改变 -->
-				</component>
-			</div>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/font-icons.css">
+		<link rel="stylesheet" href="css/iuapmobile.um.css">
+		<link rel="stylesheet" type="text/css" href="css/islider.css">
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		
+		<script src="js/summer.js" ></script>
+		<script src="js/jquery.min.js" ></script>
+		<script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="js/islider.js" ></script>
+	 	<script src="js/Sortable.js" ></script>
+	 	<script src="js/iscrollold.js" ></script>
+	</head>
+	<body id='body0'>
+		<div class="um-page" id="index">		 
+			<div id="main" class="um-content">				 
+				<div id="article">
+					  <div id="home" class="active">
+					      <um-header></um-header>
+					      <div class="um-row">
+					      	  <div id="iSlider-wrapper" class="iSlider-wrapper"></div>
+					      </div>
+					      <um-layout-text></um-layout-text>
+					      <div id="uappmanager"></div>
+					   
+					  </div>
+					  <div id="message" >  
+					      <um-header-text></um-header-text>             
+                          <div class="um-input-search">
+                              <input type="search" class="form-control" placeholder="搜索消息">
+                          </div>
+						  <um-message></um-message>
+					  </div>
+					  <div id="goods">
+					      <um-header></um-header>
+                          <div class="um-row">
+                              <div id="iSlider-wrapper2" class="iSlider-wrapper"></div>
+                          </div>
+					      <um-items></um-items>
+					      <um-classify></um-classify>
+					  </div>
+					  <div id="mine">
+						第四个个人信息页面<!--这里写第四个页面的内容-->
+					  </div>
+				</div>		 
+			</div>		
+			 <um-footer-custom></um-footer-custom> 
 		</div>
-		<!--footer组件-->
-		<um-footer></um-footer>
-</body>
+		<div class="um-page" id="application">
+		  <div class="um-header">
+		      <a onclick="back()" class="um-back">返回</a>
+              <h3>添加应用</h3>
+		  </div>
+		  <div id="" class="um-content">
+              <div id="provinceWrapper">
+                  <ul class="scroller">
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                      <li>全部分类</li>
+                  </ul>
+              </div>
+          </div>
+		</div>
+	</body>
 	<script type="text/javascript" src="js/vue.js"></script>
 	<script src="js/workbench.js" ></script>
 	<script src="js/index.js" ></script>
+	<script>
+	   function back(){
+	       UM.page.back();
+	   }
+	</script>
 </html>

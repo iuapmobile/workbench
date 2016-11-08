@@ -1,0 +1,143 @@
+/* 设置背景图片 */
+.icon-home, .icon-msg, .icon-goods,.icon-mine {
+    height: 22px;  
+  background-position: center center;
+  background-repeat:no-repeat; 
+  background-size:22px 22px;
+}
+.icon-home {
+    background-image: url(../img/home-25.png);
+}
+.icon-msg {
+    background-image: url(../img/msg-25.png);
+}
+.icon-goods {
+    background-image: url(../img/goods-25.png);
+}
+.icon-mine {
+    background-image: url(../img/mine-25.png);
+}
+/* 设置激活状态 */
+.um-footerbar-item.active .icon-home {
+    background-image: url(../img/home-25-active.png);
+}
+.um-footerbar-item.active .icon-msg {
+    background-image: url(../img/msg-25-active.png);
+}
+.um-footerbar-item.active .icon-goods {
+    background-image: url(../img/goods-25-active.png);
+}
+.um-footerbar-item.active .icon-mine {
+    background-image: url(../img/mine-25-active.png);
+}
+.um-footerbar-item.active {
+    color: rgba(241, 90, 74, 1);
+}
+.um-footerbar-item{
+	padding-top:3.5px;
+}
+#article>div{display:none;text-align:center;}
+#article>div.active{display:block;}
+#home .um-grid-row  a  div{
+	color:rgba(136, 136, 136, 1);
+	font-size:13px;
+}
+.um-grid-row > div, .um-grid-row > .um-grid-item{
+	padding:10px 0;
+}
+#home .um-grid-row  a  div.title{
+	color:rgba(51, 51, 51, 1);
+	font-size:18px;
+	font-weight:bold;			 
+}
+#home .um-grid-row a{
+	display:block;
+}
+#home .um-grid-row div.addphoto a{
+	padding:13px;
+}
+#home .um-grid-row{
+	border-bottom:1px solid rgba(230, 230, 230, 1);
+}
+#home .um-grid-row a{
+	border-right:1px solid rgba(230, 230, 230, 1);
+}
+/*消息列表样式*/
+#message  .um-header-fixed  p{
+	 color:rgba(51, 51, 51, 1);	 
+	 font-size:18px;
+}
+#message  .um-header-fixed{
+    min-height: 44px;
+}
+.msg-info {
+	position: relative;
+}
+.msg-info .um-badge {
+	position: absolute;
+	right: -10px;
+	font-size: 12px;
+}
+.msg-header {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	background: blue;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+}
+.um-list .um-list-item{
+	padding-left:0px;
+}
+.msg-info .um-badge{
+	top:0px;
+}
+.um-input-group span[class^="ti-"] {
+	color:rgba(151, 151, 151, 1);
+	padding: 6px 11px;
+}
+#message .um-input-search{
+	padding:5px 9px;background:#fff;
+	margin-top:44px;
+}
+#message .um-input-search .form-control{
+	background-color:rgba(243, 243, 243, 1);
+	background-position:40% 50%;
+	padding-left:45%;height:30px;
+}
+#message .um-input-search .form-control:focus{
+	width:100%;padding-left:8%;
+	background-position:5px 50%;
+}
+.ncontent .alist{
+				padding:10px 0;
+				
+}
+.ncontent{
+	background:#ffffff;
+	overflow:hidden;
+	border-bottom:1px solid rgba(230, 230, 230, 1);
+	
+}
+.alist a{border-right:1px solid rgba(230, 230, 230, 1);
+	
+}
+.alist{
+	position:relative;
+	top:1px;
+	width:25%;	
+	border-bottom:1px solid rgba(230, 230, 230, 1);		
+}
+.alist div{
+		color: rgba(136, 136, 136, 1);
+		 font-size: 13px;
+}
+.alist div.title{
+	color: rgba(51, 51, 51, 1);
+	font-size: 18px;
+	font-weight: bold;
+}
+.nphoto a{
+	padding:13px 0;
+}

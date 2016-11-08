@@ -16,6 +16,7 @@ function APPManager(pid,options){
 }
 APPManager.prototype = {
 	init : function(){
+		//var sortableTxt = doT.template($("#sortableTemp").text());
 		this.create();
 		this.setCss();
 	},

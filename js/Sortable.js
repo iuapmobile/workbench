@@ -101,9 +101,13 @@
 			ignore: 'a, img',
 			filter: null,
 			animation: 150,
-			delay : 1000,
+			delay : 600,
 			startTime : 0,
 			endTime : 0,
+			startX : 0,
+			startY : 0,
+			endX : 0,
+			endY : 0,
 			setData: function (dataTransfer, dragEl) {
 				dataTransfer.setData('Text', dragEl.textContent);
 			}
@@ -189,7 +193,10 @@
 				el = this.el,
 				that = this,
 				filter = options.filter;
+				
 			options.startTime = new Date().getTime();
+			options.startX = touch ? touch.pageX:null;
+			options.startY = touch?touch.pageY:null;
 			if (type === 'mousedown' && evt.button !== 0 || options.disabled) {
 				return; // only left button or enabled
 			}
@@ -358,7 +365,7 @@
 				_css(ghostEl, 'left', rect.left - parseInt(css.marginLeft, 10));
 				_css(ghostEl, 'width', rect.width);
 				_css(ghostEl, 'height', rect.height);
-				_css(ghostEl, 'opacity', '0.8');
+				_css(ghostEl, 'opacity', '0.5');
 				_css(ghostEl, 'position', 'fixed');
 				_css(ghostEl, 'zIndex', '100000');
 
@@ -371,7 +378,7 @@
 				
 				// Bind touch events
 				this.delayTime = setTimeout(function(){
-					$(".small").addClass("dragli")
+					$(".um-small").addClass("um-dragli")
 					_on(document, 'touchmove', _this._onTouchMove);
 					_on(document, 'touchend', _this._onDrop);
 					_on(document, 'touchcancel', _this._onDrop);
@@ -594,7 +601,9 @@
 			var target = evt.target.parentNode;
 			var url  = target.getAttribute("data-url");
 			var t = target.parentNode;
-			if (target.className == "um-black" && this.options.endTime - this.options.startTime < 800 && !t.classList.contains("dragli") ){
+			this.options.endX = evt.changedTouches ? Number(evt.changedTouches[0].pageX) : null;
+			this.options.endY = evt.changedTouches ? Number(evt.changedTouches[0].pageY) : null;
+			if (target.className == "um-black" && this.options.endTime - this.options.startTime < 500 && this.options.endTime - this.options.startTime > 80 && !t.classList.contains("um-dragli") && this.options.endY - this.options.startY < 20&& this.options.endX - this.options.startX < 20){
 				
 				window.location = url;
 			}
@@ -1031,37 +1040,58 @@ APPManager.prototype = {
 	},
 	create : function(){
 		var sortableTxtL = "<ul class='clearfix' id='um-sortable'>";
-		var more = "<li class='more'></li>";
+		var more = "<div class='um-more'><div style='height:40px'><img src='./img/more.png' width=40 class='mt10'></div><div class='f12 mt5'>更多应用</div></div>";
 		var sortableTxtR = "</ul>";
 		var lis = "";
 		var data = this.arr;
 		for (var i = 0; i < data.length; i++){
-			lis += "<li class='small'><a class='um-black'  data-url = '"+data[i].url+"'><img src='"+data[i].img+"' width=40 /><div class='f12 mt5'>"+data[i].label+"</div></a><a class='delete'></a></li>"
+			lis += "<li class='um-small'><a class='um-black' data-url = '"+data[i].url+"'><div class='um-delete'></div><img src='"+data[i].img+"' width=40 /><div class='f12 mt5'>"+data[i].label+"</div></a></li>"
 		}
-		var sortableTemp = sortableTxtL + lis + sortableTxtR;
+		var sortableTemp = sortableTxtL + lis + more + sortableTxtR;
 		$(this.id).append(sortableTemp);
 		
 		this.runn();
 		this.close();
 		this.remove();
+		this.openApp();
 	},
 	runn : function(){
 		var el = document.getElementById("um-sortable");
-		Sortable.create(el);
+		Sortable.create(el,{handle:".um-black"});
 	},
 	close : function(){
 		$(document).on("click",function(){
-			$(".small").removeClass("dragli");
+			$(".um-small").removeClass("um-dragli");
 		});
 	},
 	remove : function(){
-		$(".delete").on("touchstart",function(){
-			$(this).parent().remove();
+		$(".um-delete").on("touchstart",function(){
+			
+			$(this).parents(".um-small").remove();
 			return false;
 		});
 	},
 	setCss : function(){
 		var w = $(this.id).width() / this.colum;
-		$(".small").css("width",w);
+		$(".um-small").css("width",w);
+	},
+	openApp : function(){
+		$(".um-more").on("click",function(){
+			UM.page.changePage({
+	            target: "#application",
+	            isReverse: 0,
+	            transition: "um"
+	        });
+		});
+		this.provinceLoaded();
+	},
+	provinceLoaded : function (){
+		var provinceScroller = new iScroll("provinceWrapper",{
+			hScroll:false,
+			vScroll:true,
+			vScrollbar:false,
+			bounce:false,
+			momentum:false
+		});
 	}
 }

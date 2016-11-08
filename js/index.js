@@ -1,146 +1,315 @@
-﻿
-	//1、 开发者自定义组件
-	var myComponent1 = Vue.extend({
-	  	template: '<div id="com1" style="border:1px solid blue" class="mt10 mb10 p10">A custom component-{{x}}：{{name}}+{{code}}</div>',
-  		data : function(){
-  			return {
-	  			name:"iuap Component",
-	  			code:"C1001",
-	  			x:"自定义"
-	  		}
-		}
-	});
-	// 注册
-	Vue.component('my-component1', myComponent1)
-
-	//2、 开发者运行时动态添加自定义组件
-	var my2 = document.createElement('my-component2')
-	document.getElementById("mycomponents").appendChild(my2);
-	// 注册
-	Vue.component('my-component2', Vue.extend({
-	  		template: '<div style="border:1px solid red" id="com2" class="mt10 mb10 p10">动态创建自定义组件:<div>姓名:{{name}}</div><div>编码:{{code}}</div></div>',
-	  		data:function(){
-	  			return { 
-		  			name:"李四",
-		  			code:"UF1002"
-		  		}
-		  	}
-		})
-	)
-    
-	workbench.createComponent("um-header", {title:"iuapmobile 3.0"});
-
-	workbench.createComponent("um-footer", {
-		data: [{title:"消息", iconfont:"ti-comments"},
-			{title:"日程q", iconfont:"ti-notepad"},
-			{title:"通讯录", iconfont:"ti-agenda"},
-			{title:"设置", iconfont:"ti-user"}
-		]}
-	);
-	workbench.createComponent("um-applayout", {
+﻿   /*底部导航栏与4个内容区域切换*/
+	$(function(){
+		$('.um-footerbar>a').click(function(){
+				$(this).addClass('active').siblings('.active').removeClass('active');
+				var tar=$(this).attr('data-tar');
+				$(tar).addClass('active').siblings('.active').removeClass('active');	
+		});	
+	});	
+	workbench.createComponent("um-header", {placeholder:"搜订单/商品"});
+	workbench.createComponent("um-header-text", {
 		data: [
-			{title:"美食", img:"./img/mt_food.png"},
-			{title:"电影", img:"./img/mt_mv.png"},
-			{title:"酒店", img:"./img/mt_hotal.png"},
-			{title:"KTV", img:"./img/mt_ktv.png"}
-		]
-	});
-	workbench.createComponent("um-banner", {
-		data: [
-			{
-				content: "./img/g1.jpg"
-			}, 
-			{
-				content: "./img/g2.jpg"
-			}, 
-			{
-				content: "./img/g3.jpg"
-			}
+			{title: "消息",bgc:'rgba(246, 246, 246, 1)'}, 
 		]
     });
+	workbench.createComponent("um-banner", {
+		data: [
+			{content: "./img/g1.jpg"}, 
+			{content: "./img/g2.jpg"}, 
+			{content: "./img/g3.jpg"}
+		]
+    });
+    /*
+    var j = {"deviceid":"D8YDU15A31007455868753026659495","os":"web","userid":"dzk"};
+	var s = $summer.jsonToStr(j);
+	var param = {data: s};
+	$.get("http://172.20.7.98:8080/mobem/app/getapplist",param,function(data){
+		
+		var d = ($summer.strToJson(data)).data.apps.remove(0);
+		for (var i =0;i<d.length;i++){
+			d[i].img = d[i].webiconurl;
+			d[i].label = d[i].title;
+			d[i].url = d[i].weburl;
+		}
+		workbench.createComponent("um-APPManager",{
+			el:"#uappmanager",
+			data:d,
+			colum:4
+		});
+	});
+	*/
 	workbench.createComponent("um-APPManager",{
-		el:"#mycomponents2",
+		el:"#uappmanager",
 		data:[{
-			"label" : "建差",
-			"img" : "img/mt_food.png",
-			"url" : ""
+			"label" : "询报价",
+			"img" : "img/xbj.png",
+			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
-			"label" : "手机",
-			"img" : "img/mt_hotal.png",
-			"url" : ""
+			"label" : "招投标",
+			"img" : "img/ztb.png",
+			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
-			"label" : "电脑",
-			"img" : "img/mt_ktv.png",
-			"url" : ""
+			"label" : "超市",
+			"img" : "img/cs.png",
+			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
-			"label" : "平板",
-			"img" : "img/mt_money.png",
-			"url" : ""
+			"label" : "在线竞价",
+			"img" : "img/jj.png",
+			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
-			"label" : "用友",
-			"img" : "img/mt_mv.png",
-			"url" : ""
+			"label" : "供应商准入",
+			"img" : "img/zr.png",
+			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
-			"label" : "网络",
-			"img" : "img/mt_new.png",
-			"url" : ""
+			"label" : "收获",
+			"img" : "img/sh.png",
+			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
-			"label" : "科技",
-			"img" : "img/mt_xiaochi.png",
-			"url" : ""
-		},
-		{
-			"label" : "苹果",
-			"img" : "img/mt_you.png",
-			"url" : ""
+			"label" : "对账",
+			"img" : "img/dz.png",
+			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		}],
 		colum : 4
 	});
 	
-	new Vue({
-	  	el: '#body0',
-	  	data: {
-	    	info: 'Hello iuap mobile!',
-	  	  	todos:[{text:"aa"},{text:"bb"},{text:"cc"},{text:"dd"}]
-	  	},
-	  	methods: {
-   	 		add: function () {
-      			this.info +=' new';
-      			this.todos.push({text: (new Date()).toLocaleString()}); 
-    		},
-    		remove: function () {
-      			this.info = this.info.substring(0,this.info.length-4) ;
-      			this.todos.pop(); 
-    		},
-    		removeTodo: function (index) {
-      			this.todos.splice(index, 1)
-    		}
-  		},
-  		created: function () {
-		    // `this` 指向 vm 实例
-		    console.log('created is: ' + this.info)
+	workbench.createComponent("um-footer-custom", {
+		data: [{title:"首页", iconfont:"icon-home",target:'#home' },
+			{title:"消息", iconfont:"icon-msg",target:'#message' },
+			{title:"商品", iconfont:"icon-goods",target:'#goods'},
+			{title:"我的", iconfont:"icon-mine",target:'#mine'}
+		]}
+	);
+	workbench.createComponent("um-layout-text", {
+		data: [{title:"待定标", text:"12","url":'http://www.baidu.com'},
+			{title:"待收货", text:"3","url":'http://www.baidu.com'},
+			{title:"待确认对账", text:"3","url":'http://www.baidu.com'},
+			{title:"待发布", text:"5","url":'http://www.baidu.com'},
+			{title:"待审批", text:"1","url":'http://www.baidu.com'}
+			 
+		]}
+	);
+	
+	workbench.createComponent("um-items",{
+		data:[
+			{
+				"img": "img/goods/7.png",
+				"text":"数码电器",
+				"url":""
+			},
+			{
+				"img": "img/goods/1.png",
+				"text":"办公用品",
+				"url":""
+			},
+			{
+				"img": "img/goods/3.png",
+				"text":"机器设备",
+				"url":""
+			},
+			{
+				"img": "img/goods/4.png",
+				"text":"五金工具",
+				"url":""
+			},
+			{
+				"img": "img/goods/2.png",
+				"text":"电工电气",
+				"url":""
+			},
+			{
+				"img": "img/goods/5.png",
+				"text":"精细化工",
+				"url":""
+			},
+			{
+				"img": "img/goods/6.png",
+				"text":"冶金矿产",
+				"url":""
+			}
+		],
+		more:
+			{
+				"img": "img/goods/8.png",
+				"text":"所有分类",
+				"url":""
+			}
+	});
+	workbench.createComponent("um-classify",{
+		data:[
+			{
+				"img": "img/goods/7.png",
+				"text":"数码电器",
+				"url":""
+			},
+			{
+				"img": "img/goods/1.png",
+				"text":"办公用品",
+				"url":""
+			},
+			{
+				"img": "img/goods/3.png",
+				"text":"机器设备",
+				"url":""
+			},
+			{
+				"img": "img/goods/4.png",
+				"text":"五金工具",
+				"url":""
+			},
+			{
+				"img": "img/goods/2.png",
+				"text":"电工电气",
+				"url":""
+			},
+			{
+				"img": "img/goods/5.png",
+				"text":"精细化工",
+				"url":""
+			},
+			{
+				"img": "img/goods/6.png",
+				"text":"冶金矿产",
+				"url":""
+			},
+			{
+				"img": "img/goods/8.png",
+				"text":"所有分类",
+				"url":""
+			}
+		],
+		title:"推荐商品"			
+	});
+	workbench.createComponent("um-message", {
+		data: [{
+        			"sender" : "询报价",
+        			"img" : "./img/org1.png",
+        			"msgNum" : '3',
+        			"lastMsg" : "收到2份#关于“毕节吧电脑采购询价”",
+					"url":'http://www.baidu.com'
+        			 
+        		},{
+        			"sender" : "订单",
+        			"img" : "./img/org2.png",
+        			"msgNum" : '',
+        			"lastMsg" : "您的订单已经安排发货",
+					"url":'http://www.hao123.com'
+        		 
+        		},{
+        			"sender" : "对账",
+        			"img" : "./img/org3.png",
+        			"msgNum" : '2',
+        			"lastMsg" : "金立集团发来一封对账单",
+					"url":'http://www.sina.com.cn/'
+        		 
+        		},{
+        			"sender" : "公告",
+        			"img" : "./img/org4.png",
+        			"msgNum" : '',
+        			"lastMsg" : "系统维护通知",
+					"url":'http://www.baidu.com'
+        		},{
+        			"sender" : "询报价",
+        			"img" : "./img/org1.png",
+        			"msgNum" : '3',
+        			"lastMsg" : "收到2份#关于“毕节吧电脑采购询价”",
+					"url":'http://www.baidu.com'
+        			 
+        		},{
+        			"sender" : "订单",
+        			"img" : "./img/org2.png",
+        			"msgNum" : '',
+        			"lastMsg" : "您的订单已经安排发货",
+					"url":'http://www.hao123.com'
+        		 
+        		},{
+        			"sender" : "对账",
+        			"img" : "./img/org3.png",
+        			"msgNum" : '2',
+        			"lastMsg" : "金立集团发来一封对账单",
+					"url":'http://www.sina.com.cn/'
+        		 
+        		},{
+        			"sender" : "公告",
+        			"img" : "./img/org4.png",
+        			"msgNum" : '',
+        			"lastMsg" : "系统维护通知",
+					"url":'http://www.baidu.com'
+        		},{
+        			"sender" : "询报价",
+        			"img" : "./img/org1.png",
+        			"msgNum" : '3',
+        			"lastMsg" : "收到2份#关于“毕节吧电脑采购询价”",
+					"url":'http://www.baidu.com'
+        			 
+        		},{
+        			"sender" : "订单",
+        			"img" : "./img/org2.png",
+        			"msgNum" : '',
+        			"lastMsg" : "您的订单已经安排发货",
+					"url":'http://www.hao123.com'
+        		 
+        		},{
+        			"sender" : "对账",
+        			"img" : "./img/org3.png",
+        			"msgNum" : '2',
+        			"lastMsg" : "金立集团发来一封对账单",
+					"url":'http://www.sina.com.cn/'
+        		 
+        		},{
+        			"sender" : "公告",
+        			"img" : "./img/org4.png",
+        			"msgNum" : '',
+        			"lastMsg" : "系统维护通知",
+					"url":'http://www.baidu.com'
+        		}                        
+		]}
+	);
+new Vue({
+  	el: '#body0',
+  	data: {
+    	info: 'Hello iuap mobile!',
+  	  	todos:[{text:"aa"},{text:"bb"},{text:"cc"},{text:"dd"}]
+  	},
+  	methods: {
+ 		add: function () {
+  			this.info +=' new';
+  			this.todos.push({text: (new Date()).toLocaleString()}); 
 		},
-		beforeCompile: function () {
-		    // `this` 指向 vm 实例
-		    console.log('beforeCompile is: ' + this.info)
+		remove: function () {
+  			this.info = this.info.substring(0,this.info.length-4) ;
+  			this.todos.pop(); 
 		},
-		compiled: function () {
-		    // `this` 指向 vm 实例
-		    console.log('compiled is: ' + this.info)
-		},ready: function () {
-		    // `this` 指向 vm 实例
-		    console.log('ready is: ' + this.info)
-		},beforeDestroy: function () {
-		    // `this` 指向 vm 实例
-		    console.log('beforeDestroy is: ' + this.info)
-		},destroy: function () {
-		    // `this` 指向 vm 实例
-		    console.log('destroy is: ' + this.info)
+		removeTodo: function (index) {
+  			this.todos.splice(index, 1)
 		}
-	})
+	},
+	created: function () {
+	    // `this` 指向 vm 实例
+	   // console.log('created is: ' + this.info)
+	},
+	beforeCompile: function () {
+	    // `this` 指向 vm 实例
+	   // console.log('beforeCompile is: ' + this.info)
+	},
+	compiled: function () {
+	    // `this` 指向 vm 实例
+	    //console.log('compiled is: ' + this.info)
+	},ready: function () {
+	    // `this` 指向 vm 实例
+	   // console.log('ready is: ' + this.info)
+	},beforeDestroy: function () {
+	    // `this` 指向 vm 实例
+	   // console.log('beforeDestroy is: ' + this.info)
+	},destroy: function () {
+	    // `this` 指向 vm 实例
+	   // console.log('destroy is: ' + this.info)
+	}
+})
+ 
+ 
