@@ -141,3 +141,19 @@
 .nphoto a{
 	padding:13px 0;
 }
+
+/*toDo页面css*/
+
+#toDo .um-input-search .form-control{
+	margin-left:8%;
+}
+#toDo .um-input-search{
+	background-color:rgba(246, 246, 246, 1)
+}
+#toDo .um-back{
+	top:3px;
+	}
+#toDo .um-back:before{
+	border-left-color:rgba(232, 76, 61, 1);
+	border-bottom-color:rgba(232, 76, 61, 1);
+}
