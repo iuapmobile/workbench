@@ -27,10 +27,49 @@
 #um-sortable .um-dragli .um-delete{
 	display: block;
 }
-#provinceWrapper{position:relative; width:30%; height:100%;}
-#provinceWrapper .scroller{width:100%; background:#fff;}
-#provinceWrapper .scroller li{height:45px; line-height:45px; border-bottom:1px solid #e7e7e7; text-indent:1em; border-right:1px solid #e7e7e7;background: #f6f6f6;}
-#provinceWrapper .scroller li.active{border-right: none;background: #ffffff;}
+/*  */
+#application .um-content{
+	display: -webkit-box;
+    display: box;
+    display: -webkit-flex;
+    display: flex;
+}
+#appclassify{
+	position:relative; 
+	width:25%; 
+	height:100%;
+}
+#appclassify ul{
+	width:100%; background:#fff;
+}
+#appclassify ul li{
+	height:45px; line-height:45px; 
+	padding-left:10px;
+	font-size:12px;
+	background: #f6f6f6;
+	border-left:2px solid #f6f6f6;
+}
+#appclassify ul li.active{
+	background: #ffffff;
+	border-left:2px solid #007aff
+}
+#applist{
+	width:75%;
+	border-left:1px solid #E6E6E6;
+	overflow:scroll;
+}
+#applist .title{
+	font-size:12px;
+	font-weight:normal;
+	padding-left:10px;
+	line-height:25px;
+	color:#C2C2C2
+}
+#applist li{
+}
+#applist .um-media-heading{
+	margin:0;
+}
 /* um-header-fixed组件 */
 .um-header-fixed{
 	width:100%;

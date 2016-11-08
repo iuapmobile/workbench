@@ -1086,11 +1086,11 @@ APPManager.prototype = {
 		this.provinceLoaded();
 	},
 	provinceLoaded : function (){
-		var provinceScroller = new iScroll("provinceWrapper",{
+		var provinceScroller = new iScroll("applist",{
 			hScroll:false,
 			vScroll:true,
 			vScrollbar:false,
-			bounce:false,
+			bounce:true,
 			momentum:false
 		});
 	}

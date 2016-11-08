@@ -1,14 +1,8 @@
-/*
- * Summer UI JavaScript Library
- * Copyright (c) 2016 yonyou.com
- * Author: gct@yonyou.com
- * Version: 3.0.0.20160805
- */ 
 ( typeof require == "function") && require.config({
 	baseUrl : 'js',
 	paths : {
 		jquery : "jquery-2.1.4.min",
-		UM : "Frameworks/iuapmobile.frameworks.core"
+		UM : "Frameworks/iuapmobile.frameworks.core-2.7.0"
 	}
 }); ( function(global, factory) {
 		if ( typeof module === "object" && typeof module.exports === "object") {
