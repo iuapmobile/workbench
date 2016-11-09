@@ -142,7 +142,8 @@
 			var self = this;
 			var $link = $(e.currentTarget);
 			var $parent = $link.parent();
-			var newLoc = '#' + self.getHash($link);
+			var hv = self.getHash($link);
+			var newLoc = '#' + hv;
 
 			if(!$parent.hasClass(self.config.currentClass)) {
 				//Start callback
@@ -157,7 +158,7 @@
 				self.unbindInterval();
 
 				//Scroll to the correct position
-				self.scrollTo(newLoc, function() {
+				self.scrollTo(hv, function() {
 					//Do we need to change the hash?
 					if(self.config.changeHash) {
 						window.location.hash = newLoc;
@@ -199,7 +200,7 @@
 		},
 
 		scrollTo: function(target, callback) {
-			var offset = $(target).offset().top;
+			var offset = APPManager.height[target];
 
 			$('html, body').animate({
 				scrollTop: offset

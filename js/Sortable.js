@@ -1025,108 +1025,342 @@
 	return Sortable;
 });
 /* 调用插件  */
-function APPManager(id,options){
-	this.id = id;
-	this.options = options = ( options || {} );
-	this.arr = options.data || this.arr;
-	this.colum = options.colum || 4;
-	this.moreType = false; 
-	this.scroller = null;
-	this.height = {};
-	this.init();
-}
-APPManager.prototype = {
-	init : function(){
-		this.create();
-		this.setCss();
-	},
-	create : function(){
-		var sortableTxtL = "<ul class='clearfix' id='um-sortable'>";
-		var more = "<div class='um-more'><div style='height:40px'><img src='./img/more.png' width=40 class='mt10'></div><div class='f12 mt5'>更多应用</div></div>";
-		var sortableTxtR = "</ul>";
-		var lis = "";
-		var data = this.arr;
-		for (var i = 0; i < data.length; i++){
-			lis += "<li class='um-small'><a class='um-black' data-url = '"+data[i].url+"'><div class='um-delete'></div><img src='"+data[i].img+"' width=40 /><div class='f12 mt5'>"+data[i].label+"</div></a></li>"
-		}
-		var sortableTemp = sortableTxtL + lis + more + sortableTxtR;
-		$(this.id).append(sortableTemp);
-		
-		this.runn();
-		this.close();
-		this.remove();
-		this.openApp();
-	},
-	runn : function(){
-		var el = document.getElementById("um-sortable");
-		Sortable.create(el,{handle:".um-black"});
-	},
-	close : function(){
-		$(document).on("click",function(){
-			$(".um-small").removeClass("um-dragli");
-		});
-	},
-	remove : function(){
-		$(".um-delete").on("touchstart",function(){
+;(function($, window, document, undefined){
+	function APPManager(id,options){
+		this.id = id;
+		this.options = options = ( options || {} );
+		this.arr = options.data || this.arr;
+		this.colum = options.colum || 4;
+		this.moreType = false; 
+		this.scroller = null;
+		this.height = {};
+		this.init();
+	}
+	APPManager.prototype = {
+		init : function(){
+			this.create();
+			this.setCss();
+		},
+		create : function(){
+			var sortableTxtL = "<ul class='clearfix' id='um-sortable'>";
+			var more = "<div class='um-more'><div style='height:40px'><img src='./img/more.png' width=40 class='mt10'></div><div class='f12 mt5'>更多应用</div></div>";
+			var sortableTxtR = "</ul>";
+			var lis = "";
+			var data = this.arr;
+			for (var i = 0; i < data.length; i++){
+				lis += "<li class='um-small'><a class='um-black' data-url = '"+data[i].url+"'><div class='um-delete'></div><img src='"+data[i].img+"' width=40 /><div class='f12 mt5'>"+data[i].label+"</div></a></li>"
+			}
+			var sortableTemp = sortableTxtL + lis + more + sortableTxtR;
+			$(this.id).append(sortableTemp);
 			
-			$(this).parents(".um-small").remove();
-			return false;
+			this.runn();
+			this.close();
+			this.remove();
+			this.openApp();
+		},
+		runn : function(){
+			var el = document.getElementById("um-sortable");
+			Sortable.create(el,{handle:".um-black"});
+		},
+		close : function(){
+			$(document).on("click",function(){
+				$(".um-small").removeClass("um-dragli");
+			});
+		},
+		remove : function(){
+			$(".um-delete").on("touchstart",function(){
+				
+				$(this).parents(".um-small").remove();
+				return false;
+			});
+		},
+		setCss : function(){
+			var w = $(this.id).width() / this.colum;
+			$(".um-small").css("width",w);
+		},
+		openApp : function(){
+			$(".um-more").on("click",function(){
+				UM.page.changePage({
+		            target: "#application",
+		            isReverse: 0,
+		            transition: "um"
+		        });
+			});
+			$('#asdf').onePageNav();
+			//this.provinceLoaded();
+			//this.scroll();
+		},
+		nav : function(){
+			
+		},
+		provinceLoaded : function (){
+			var _this = this;
+			this.Scroller = new iScroll("applist",{
+				hScroll:false,
+				vScroll:true,
+				vScrollbar:false,
+				bounce:true,
+				momentum:true,
+				onScrollMove : function(){
+					//console.log(_this.height["b"])
+					if( -this.y >= _this.height["b"]){
+						$("#b").addClass("active")
+					}
+				}
+			});
+		},
+		scroll: function(){
+			var _this = this;
+			this.getHeight();
+			$("#appclassify").on("click","li",function(){
+				if($(this).hasClass("active")){
+					return false;
+				}
+				var dataId = $(this).attr("data-id");
+				$(this).addClass("active").siblings().removeClass("active");
+				var height = -_this.height[dataId];
+				_this.Scroller.scrollTo(0,height,200);
+				
+			})
+		}
+		
+	}
+
+	$.fn.vvv = function(options) {
+		return this.each(function() {
+			new APPManager(this,options);
 		});
-	},
-	setCss : function(){
-		var w = $(this.id).width() / this.colum;
-		$(".um-small").css("width",w);
-	},
-	openApp : function(){
-		$(".um-more").on("click",function(){
-			UM.page.changePage({
-	            target: "#application",
-	            isReverse: 0,
-	            transition: "um"
-	        });
-		});
-		this.nav();
-		//this.provinceLoaded();
-		//this.scroll();
-	},
-	nav : function(){
-		$('#asdf').onePageNav();
-	},
-	provinceLoaded : function (){
-		var _this = this;
-		this.Scroller = new iScroll("applist",{
-			hScroll:false,
-			vScroll:true,
-			vScrollbar:false,
-			bounce:true,
-			momentum:true,
-			onScrollMove : function(){
-				//console.log(_this.height["b"])
-				if( -this.y >= _this.height["b"]){
-					$("#b").addClass("active")
+	};
+})( jQuery, window , document );
+/*
+ * jQuery One Page Nav Plugin
+ * http://github.com/davist11/jQuery-One-Page-Nav
+ *
+ * Copyright (c) 2010 Trevor Davis (http://trevordavis.net)
+ * Dual licensed under the MIT and GPL licenses.
+ * Uses the same license as jQuery, see:
+ * http://jquery.org/license
+ *
+ * @version 3.0.0
+ *
+ * Example usage:
+ * $('#nav').onePageNav({
+ *   currentClass: 'current',
+ *   changeHash: false,
+ *   scrollSpeed: 750
+ * });
+ */
+
+;(function($, window, document, undefined){
+
+	// our plugin constructor
+	var OnePageNav = function(elem, options){
+		this.elem = elem;
+		this.$elem = $(elem);
+		this.options = options;
+		this.metadata = this.$elem.data('plugin-options');
+		this.$win = $("#applist");
+		this.sections = {};
+		this.didScroll = false;
+		this.$doc = $(document);
+		this.height = {};
+		this.docHeight = this.$doc.height();
+	};
+
+	// the plugin prototype
+	OnePageNav.prototype = {
+		defaults: {
+			navItems: 'a',
+			currentClass: 'active',
+			changeHash: false,
+			easing: 'swing',
+			filter: '',
+			scrollSpeed: 750,
+			scrollThreshold: 0.5,
+			begin: false,
+			end: false,
+			scrollChange: false
+		},
+
+		init: function() {
+			// Introduce defaults that can be extended either
+			// globally or using an object literal.
+			this.config = $.extend({}, this.defaults, this.options, this.metadata);
+
+			this.$nav = this.$elem.find(this.config.navItems);
+
+			//Filter any links out of the nav
+			if(this.config.filter !== '') {
+				this.$nav = this.$nav.filter(this.config.filter);
+			}
+
+			//Handle clicks on the nav
+			this.$nav.on('click.onePageNav', $.proxy(this.handleClick, this));
+
+			//Get the section positions
+			this.getPositions();
+
+			//Handle scroll changes
+			this.bindInterval();
+
+			//Update the positions on resize too
+			this.$win.on('resize.onePageNav', $.proxy(this.getPositions, this));
+			//
+			this.getHeight();
+			return this;
+		},
+
+		adjustNav: function(self, $parent) {
+			self.$elem.find('.' + self.config.currentClass).removeClass(self.config.currentClass);
+			$parent.addClass(self.config.currentClass);
+		},
+
+		bindInterval: function() {
+			var self = this;
+			var docHeight;
+
+			self.$win.on('scroll.onePageNav', function() {
+				self.didScroll = true;
+			});
+
+			self.t = setInterval(function() {
+				docHeight = self.$doc.height();
+
+				//If it was scrolled
+				if(self.didScroll) {
+					self.didScroll = false;
+					self.scrollChange();
+				}
+
+				//If the document height changes
+				if(docHeight !== self.docHeight) {
+					self.docHeight = docHeight;
+					self.getPositions();
+				}
+			}, 250);
+		},
+
+		getHash: function($link) {
+			return $link.attr('attr-href').split('#')[1];
+		},
+
+		getPositions: function() {
+			var self = this;
+			var linkHref;
+			var topPos;
+			var $target;
+
+			self.$nav.each(function() {
+				linkHref = self.getHash($(this));
+				$target = $('#' + linkHref);
+
+				if($target.length) {
+					topPos = $target.offset().top;
+					self.sections[linkHref] = Math.round(topPos);
+				}
+			});
+		},
+
+		getSection: function(windowPos) {
+			var returnValue = null;
+			var windowHeight = Math.round(this.$win.height() * this.config.scrollThreshold);
+
+			for(var section in this.sections) {
+				if((this.sections[section] - windowHeight) < windowPos) {
+					returnValue = section;
 				}
 			}
-		});
-	},
-	scroll: function(){
-		var _this = this;
-		this.getHeight();
-		$("#appclassify").on("click","li",function(){
-			if($(this).hasClass("active")){
-				return false;
+
+			return returnValue;
+		},
+
+		handleClick: function(e) {
+			var self = this;
+			var $link = $(e.currentTarget);
+			var $parent = $link.parent();
+			var hv = self.getHash($link);
+			var newLoc = '#' + hv;
+
+			if(!$parent.hasClass(self.config.currentClass)) {
+				//Start callback
+				if(self.config.begin) {
+					self.config.begin();
+				}
+
+				//Change the highlighted nav item
+				self.adjustNav(self, $parent);
+
+				//Removing the auto-adjust on scroll
+				self.unbindInterval();
+
+				//Scroll to the correct position
+				self.scrollTo(hv, function() {
+					//Do we need to change the hash?
+					if(self.config.changeHash) {
+						window.location.hash = newLoc;
+					}
+
+					//Add the auto-adjust on scroll back in
+					self.bindInterval();
+
+					//End callback
+					if(self.config.end) {
+						self.config.end();
+					}
+				});
 			}
-			var dataId = $(this).attr("data-id");
-			$(this).addClass("active").siblings().removeClass("active");
-			var height = -_this.height[dataId];
-			_this.Scroller.scrollTo(0,height,200);
-			
-		})
-	},
-	getHeight : function(){
-		var _this = this;
-		$(".um-appitem").each(function(i){
-			_this.height[$(this).attr("data-v")] = $(this).offset().top - 44;
+
+			e.preventDefault();
+		},
+
+		scrollChange: function() {
+			var windowTop = this.$win.scrollTop();
+			var position = this.getSection(windowTop);
+			var $parent;
+
+			//If the position is set
+			if(position !== null) {
+				$parent = this.$elem.find('a[attr-href$="#' + position + '"]').parent();
+
+				//If it's not already the current section
+				if(!$parent.hasClass(this.config.currentClass)) {
+					//Change the highlighted nav item
+					this.adjustNav(this, $parent);
+
+					//If there is a scrollChange callback
+					if(this.config.scrollChange) {
+						this.config.scrollChange($parent);
+					}
+				}
+			}
+		},
+
+		scrollTo: function(target, callback) {
+			var offset = this.height[target];
+
+			$('#applist').animate({
+				scrollTop: offset
+			}, this.config.scrollSpeed, this.config.easing, callback);
+		},
+
+		unbindInterval: function() {
+			clearInterval(this.t);
+			this.$win.unbind('scroll.onePageNav');
+		},
+		getHeight : function(){
+			var _this = this;
+			$(".um-appitem").each(function(i){
+				_this.height[$(this).attr("data-v")] = $(this).offset().top - 44;
+			});
+		}
+	};
+
+	OnePageNav.defaults = OnePageNav.prototype.defaults;
+
+	$.fn.onePageNav = function(options) {
+		return this.each(function() {
+			new OnePageNav(this, options).init();
 		});
-	}
-	
-}
+	};
+
+})( jQuery, window , document );
