@@ -1031,6 +1031,8 @@ function APPManager(id,options){
 	this.arr = options.data || this.arr;
 	this.colum = options.colum || 4;
 	this.moreType = false; 
+	this.scroller = null;
+	this.height = {};
 	this.init();
 }
 APPManager.prototype = {
@@ -1083,15 +1085,48 @@ APPManager.prototype = {
 	            transition: "um"
 	        });
 		});
-		this.provinceLoaded();
+		this.nav();
+		//this.provinceLoaded();
+		//this.scroll();
+	},
+	nav : function(){
+		$('#asdf').onePageNav();
 	},
 	provinceLoaded : function (){
-		var provinceScroller = new iScroll("applist",{
+		var _this = this;
+		this.Scroller = new iScroll("applist",{
 			hScroll:false,
 			vScroll:true,
 			vScrollbar:false,
 			bounce:true,
-			momentum:false
+			momentum:true,
+			onScrollMove : function(){
+				//console.log(_this.height["b"])
+				if( -this.y >= _this.height["b"]){
+					$("#b").addClass("active")
+				}
+			}
+		});
+	},
+	scroll: function(){
+		var _this = this;
+		this.getHeight();
+		$("#appclassify").on("click","li",function(){
+			if($(this).hasClass("active")){
+				return false;
+			}
+			var dataId = $(this).attr("data-id");
+			$(this).addClass("active").siblings().removeClass("active");
+			var height = -_this.height[dataId];
+			_this.Scroller.scrollTo(0,height,200);
+			
+		})
+	},
+	getHeight : function(){
+		var _this = this;
+		$(".um-appitem").each(function(i){
+			_this.height[$(this).attr("data-v")] = $(this).offset().top - 44;
 		});
 	}
+	
 }

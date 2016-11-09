@@ -49,6 +49,12 @@
 	background: #f6f6f6;
 	border-left:2px solid #f6f6f6;
 }
+#appclassify ul li a{
+	display:block;
+	width:100%;
+	height:100%;
+	color:#666666;
+}
 #appclassify ul li.active{
 	background: #ffffff;
 	border-left:2px solid #007aff
@@ -63,9 +69,11 @@
 	font-weight:normal;
 	padding-left:10px;
 	line-height:25px;
-	color:#C2C2C2
+	color:#C2C2C2;
+	position:relative;
 }
-#applist li{
+#applist .um-appitem{
+	overflow:hidden;
 }
 #applist .um-media-heading{
 	margin:0;
