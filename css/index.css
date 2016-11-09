@@ -69,6 +69,9 @@
 }
 #message  .um-header-fixed{
     min-height: 44px;
+    position:absolute;
+    top:0;
+    left:0;
 }
 .msg-info {
 	position: relative;
@@ -127,6 +130,7 @@
 	position:relative;
 	top:1px;
 	width:25%;	
+	overflow:hidden;
 	border-bottom:1px solid rgba(230, 230, 230, 1);		
 }
 .alist div{
@@ -160,3 +164,7 @@
 	border-left-color:rgba(232, 76, 61, 1);
 	border-bottom-color:rgba(232, 76, 61, 1);
 }
+/*mine页面*/
+#mine  .um-label {
+	color:#666;
+} 
