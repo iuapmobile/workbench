@@ -164,3 +164,7 @@
 	border-left-color:rgba(232, 76, 61, 1);
 	border-bottom-color:rgba(232, 76, 61, 1);
 }
+/*mine页面*/
+#mine  .um-label {
+	color:#666;
+} 
