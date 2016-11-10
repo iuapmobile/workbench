@@ -1086,7 +1086,7 @@
 		            transition: "um"
 		        });
 			});
-			$('#asdf').onePageNav();
+			$('#um-PageNav').onePageNav();
 			//this.provinceLoaded();
 			//this.scroll();
 		},
@@ -1159,7 +1159,7 @@
 		this.$elem = $(elem);
 		this.options = options;
 		this.metadata = this.$elem.data('plugin-options');
-		this.$win = $("#applist");
+		this.$win = $("#um-applist");
 		this.sections = {};
 		this.didScroll = false;
 		this.$doc = $(document);
@@ -1338,7 +1338,7 @@
 		scrollTo: function(target, callback) {
 			var offset = this.height[target];
 
-			$('#applist').animate({
+			$('#um-applist').animate({
 				scrollTop: offset
 			}, this.config.scrollSpeed, this.config.easing, callback);
 		},
