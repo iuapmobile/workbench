@@ -1087,45 +1087,8 @@
 		        });
 			});
 			$('#um-PageNav').onePageNav();
-			//this.provinceLoaded();
-			//this.scroll();
-		},
-		nav : function(){
-			
-		},
-		provinceLoaded : function (){
-			var _this = this;
-			this.Scroller = new iScroll("applist",{
-				hScroll:false,
-				vScroll:true,
-				vScrollbar:false,
-				bounce:true,
-				momentum:true,
-				onScrollMove : function(){
-					//console.log(_this.height["b"])
-					if( -this.y >= _this.height["b"]){
-						$("#b").addClass("active")
-					}
-				}
-			});
-		},
-		scroll: function(){
-			var _this = this;
-			this.getHeight();
-			$("#appclassify").on("click","li",function(){
-				if($(this).hasClass("active")){
-					return false;
-				}
-				var dataId = $(this).attr("data-id");
-				$(this).addClass("active").siblings().removeClass("active");
-				var height = -_this.height[dataId];
-				_this.Scroller.scrollTo(0,height,200);
-				
-			})
 		}
-		
 	}
-
 	$.fn.vvv = function(options) {
 		return this.each(function() {
 			new APPManager(this,options);
@@ -1338,7 +1301,7 @@
 		scrollTo: function(target, callback) {
 			var offset = this.height[target];
 
-			$('#um-applist').animate({
+			this.$win.animate({
 				scrollTop: offset
 			}, this.config.scrollSpeed, this.config.easing, callback);
 		},
@@ -1350,7 +1313,7 @@
 		getHeight : function(){
 			var _this = this;
 			$(".um-appitem").each(function(i){
-				_this.height[$(this).attr("data-v")] = $(this).offset().top - 44;
+				_this.height[$(this).attr("id")] = $(this).offset().top - 44;
 			});
 		}
 	};
