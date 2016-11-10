@@ -101,7 +101,6 @@
 }
 .um-input-group{
 	margin-top:3px;
-	
 }
 .um-header-fixed .form-control:focus {outline: none;} 
 .um-header-fixed .form-control{
@@ -138,6 +137,7 @@
 }
 .um-input-group .btn:not(:first-child):not(:last-child), .um-input-group .btn-bg:not(:first-child):not(:last-child), .um-input-group .um-btn:not(:first-child):not(:last-child), .um-input-group .form-control:not(:first-child):not(:last-child){
 	border-radius:5px;
+	background:rgba(255,255,255,0.9)
 }
 /* um-items */
 .um-grey{
