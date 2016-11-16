@@ -34,37 +34,37 @@
     display: -webkit-flex;
     display: flex;
 }
-#appclassify{
+#um-appclassify{
 	position:relative; 
 	width:25%; 
 	height:100%;
 }
-#appclassify ul{
+#um-appclassify ul{
 	width:100%; background:#fff;
 }
-#appclassify ul li{
+#um-appclassify ul li{
 	height:45px; line-height:45px; 
 	padding-left:10px;
 	font-size:12px;
 	background: #f6f6f6;
 	border-left:2px solid #f6f6f6;
 }
-#appclassify ul li a{
+#um-appclassify ul li a{
 	display:block;
 	width:100%;
 	height:100%;
 	color:#666666;
 }
-#appclassify ul li.active{
+#um-appclassify ul li.active{
 	background: #ffffff;
 	border-left:2px solid #007aff
 }
-#applist{
+#um-applist{
 	width:75%;
 	border-left:1px solid #E6E6E6;
 	overflow:scroll;
 }
-#applist .title{
+#um-applist .title{
 	font-size:12px;
 	font-weight:normal;
 	padding-left:10px;
@@ -72,10 +72,10 @@
 	color:#C2C2C2;
 	position:relative;
 }
-#applist .um-appitem{
+#um-applist .um-appitem{
 	overflow:hidden;
 }
-#applist .um-media-heading{
+#um-applist .um-media-heading{
 	margin:0;
 }
 /* um-header-fixed组件 */
@@ -101,7 +101,6 @@
 }
 .um-input-group{
 	margin-top:3px;
-	
 }
 .um-header-fixed .form-control:focus {outline: none;} 
 .um-header-fixed .form-control{
@@ -138,6 +137,7 @@
 }
 .um-input-group .btn:not(:first-child):not(:last-child), .um-input-group .btn-bg:not(:first-child):not(:last-child), .um-input-group .um-btn:not(:first-child):not(:last-child), .um-input-group .form-control:not(:first-child):not(:last-child){
 	border-radius:5px;
+	background:rgba(255,255,255,0.9)
 }
 /* um-items */
 .um-grey{
