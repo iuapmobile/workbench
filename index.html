@@ -207,7 +207,7 @@
 
 		<div class="um-page" id="application">
 		  <div class="um-header">
-		      <a onclick="back()" class="um-back">返回</a>
+		      <a class="um-back">返回</a>
               <h3>添加应用</h3>
 		  </div>
 		  <div id="" class="um-content">
@@ -224,8 +224,8 @@
                           <h6 class="title">应用</h6>
                           <div class="um-listview-wrap" id="listview">
                               <ul class="um-list um-no-active">
-                                <li class="um-listview-row">
-                                    <a class="um-list-item um-swipe-action um-no-icon">
+                                <li class="um-listview-row" data-mark="xbj">
+                                    <div class="um-list-item um-swipe-action um-no-icon" href="www.baidu.com">
                                         <div class="um-list-item-media msg-info">
                                             <img alt="" src="img/xbj.png" width=40>
                                         </div>
@@ -236,7 +236,7 @@
                                             </div>
                                             <div class="pr10">
                                                 <label class="um-switch1">
-                                                    <input type="checkbox" value="on" checked="checked">
+                                                    <input type="checkbox" id="iiinput" checked="checked">
                                                     <div class="um-track">
                                                         <div class="um-handle">
                                                         </div>
@@ -244,10 +244,10 @@
                                                 </label>
                                             </div>
                                         </div> 
-                                    </a>
+                                    </div>
                                 </li>
-                                <li class="um-listview-row">
-                                    <a class="um-list-item um-swipe-action um-no-icon">
+                                <li class="um-listview-row" data-mark="ztb">
+                                    <div class="um-list-item um-swipe-action um-no-icon">
                                         <div class="um-list-item-media msg-info">
                                             <img alt="" src="img/ztb.png" width=40>
                                         </div>
@@ -266,9 +266,9 @@
                                                 </label>
                                             </div>
                                         </div> 
-                                    </a>
+                                    </div>
                                 </li>
-                                <li class="um-listview-row">
+                                <li class="um-listview-row" data-mark="cs">
                                     <a class="um-list-item um-swipe-action um-no-icon">
                                         <div class="um-list-item-media msg-info">
                                             <img alt="" src="img/cs.png" width=40>
@@ -290,7 +290,7 @@
                                         </div> 
                                     </a>
                                 </li>
-                                <li class="um-listview-row">
+                                <li class="um-listview-row" data-mark="jj">
                                     <a class="um-list-item um-swipe-action um-no-icon">
                                         <div class="um-list-item-media msg-info">
                                             <img alt="" src="img/jj.png" width=40>
@@ -312,7 +312,7 @@
                                         </div> 
                                     </a>
                                 </li>
-                                <li class="um-listview-row">
+                                <li class="um-listview-row" data-mark="zr">
                                     <a class="um-list-item um-swipe-action um-no-icon">
                                         <div class="um-list-item-media msg-info">
                                             <img alt="" src="img/zr.png" width=40>
@@ -334,7 +334,7 @@
                                         </div> 
                                     </a>
                                 </li>
-                                <li class="um-listview-row">
+                                <li class="um-listview-row" data-mark="sh">
                                     <a class="um-list-item um-swipe-action um-no-icon">
                                         <div class="um-list-item-media msg-info">
                                             <img alt="" src="img/sh.png" width=40>
@@ -356,7 +356,7 @@
                                         </div> 
                                     </a>
                                 </li>
-                                <li class="um-listview-row">
+                                <li class="um-listview-row" data-mark="dz">
                                     <a class="um-list-item um-swipe-action um-no-icon">
                                         <div class="um-list-item-media msg-info">
                                             <img alt="" src="img/dz.png" width=40>
@@ -374,7 +374,7 @@
                                                         </div>
                                                     </div>
                                                 </label>
-                                            </div>
+                                            </div>           
                                         </div> 
                                     </a>
                                 </li>
@@ -590,6 +590,138 @@
                                         </div> 
                                     </a>
                                 </li>
+                                <li class="um-listview-row">
+                                    <a class="um-list-item um-swipe-action um-no-icon">
+                                        <div class="um-list-item-media msg-info">
+                                            <img alt="" src="img/goods/4.png" width=40>
+                                        </div>
+                                        <div class="um-list-item-inner">
+                                            <div class="um-list-item-body">
+                                                <h4 class="um-media-heading f14 um-text-overflow">对账</h4>
+                                                <p class="um-gray f12 um-text-overflow">暂无详情</p>
+                                            </div>
+                                            <div class="pr10">
+                                                <label class="um-switch1">
+                                                    <input type="checkbox">
+                                                    <div class="um-track">
+                                                        <div class="um-handle">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div> 
+                                    </a>
+                                </li>
+                                <li class="um-listview-row">
+                                    <a class="um-list-item um-swipe-action um-no-icon">
+                                        <div class="um-list-item-media msg-info">
+                                            <img alt="" src="img/goods/5.png" width=40>
+                                        </div>
+                                        <div class="um-list-item-inner">
+                                            <div class="um-list-item-body">
+                                                <h4 class="um-media-heading f14 um-text-overflow">开票</h4>
+                                                <p class="um-gray f12 um-text-overflow">暂无详情</p>
+                                            </div>
+                                            <div class="pr10">
+                                                <label class="um-switch1">
+                                                    <input type="checkbox">
+                                                    <div class="um-track">
+                                                        <div class="um-handle">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div> 
+                                    </a>
+                                </li>
+                                <li class="um-listview-row">
+                                    <a class="um-list-item um-swipe-action um-no-icon">
+                                        <div class="um-list-item-media msg-info">
+                                            <img alt="" src="img/goods/5.png" width=40>
+                                        </div>
+                                        <div class="um-list-item-inner">
+                                            <div class="um-list-item-body">
+                                                <h4 class="um-media-heading f14 um-text-overflow">开票</h4>
+                                                <p class="um-gray f12 um-text-overflow">暂无详情</p>
+                                            </div>
+                                            <div class="pr10">
+                                                <label class="um-switch1">
+                                                    <input type="checkbox">
+                                                    <div class="um-track">
+                                                        <div class="um-handle">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div> 
+                                    </a>
+                                </li>
+                                <li class="um-listview-row">
+                                    <a class="um-list-item um-swipe-action um-no-icon">
+                                        <div class="um-list-item-media msg-info">
+                                            <img alt="" src="img/goods/4.png" width=40>
+                                        </div>
+                                        <div class="um-list-item-inner">
+                                            <div class="um-list-item-body">
+                                                <h4 class="um-media-heading f14 um-text-overflow">对账</h4>
+                                                <p class="um-gray f12 um-text-overflow">暂无详情</p>
+                                            </div>
+                                            <div class="pr10">
+                                                <label class="um-switch1">
+                                                    <input type="checkbox">
+                                                    <div class="um-track">
+                                                        <div class="um-handle">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div> 
+                                    </a>
+                                </li>
+                                <li class="um-listview-row">
+                                    <a class="um-list-item um-swipe-action um-no-icon">
+                                        <div class="um-list-item-media msg-info">
+                                            <img alt="" src="img/goods/5.png" width=40>
+                                        </div>
+                                        <div class="um-list-item-inner">
+                                            <div class="um-list-item-body">
+                                                <h4 class="um-media-heading f14 um-text-overflow">开票</h4>
+                                                <p class="um-gray f12 um-text-overflow">暂无详情</p>
+                                            </div>
+                                            <div class="pr10">
+                                                <label class="um-switch1">
+                                                    <input type="checkbox">
+                                                    <div class="um-track">
+                                                        <div class="um-handle">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div> 
+                                    </a>
+                                </li>
+                                <li class="um-listview-row">
+                                    <a class="um-list-item um-swipe-action um-no-icon">
+                                        <div class="um-list-item-media msg-info">
+                                            <img alt="" src="img/goods/5.png" width=40>
+                                        </div>
+                                        <div class="um-list-item-inner">
+                                            <div class="um-list-item-body">
+                                                <h4 class="um-media-heading f14 um-text-overflow">开票</h4>
+                                                <p class="um-gray f12 um-text-overflow">暂无详情</p>
+                                            </div>
+                                            <div class="pr10">
+                                                <label class="um-switch1">
+                                                    <input type="checkbox">
+                                                    <div class="um-track">
+                                                        <div class="um-handle">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div> 
+                                    </a>
+                                </li>
                               </ul>
                           </div>
                       </div> 
@@ -602,8 +734,6 @@
 	<script src="js/workbench.js" ></script>
 	<script src="js/index.js" ></script>
 	<script>
-	   function back(){
-	       UM.page.back();
-	   }
+	  
 	</script>
 </html>

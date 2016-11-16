@@ -1,9 +1,3 @@
-/**!
- * Sortable
- * @author	RubaXa   <trash@rubaxa.org>
- * @license MIT
- */
-
 
 (function (factory) {
 	"use strict";
@@ -1030,15 +1024,17 @@
 		this.id = id;
 		this.options = options = ( options || {} );
 		this.arr = options.data || this.arr;
+		
 		this.colum = options.colum || 4;
-		this.moreType = false; 
-		this.scroller = null;
-		this.height = {};
+		
+		//
+		this.labelArr = [];
 		this.init();
 	}
 	APPManager.prototype = {
 		init : function(){
 			this.create();
+			
 			this.setCss();
 		},
 		create : function(){
@@ -1048,7 +1044,7 @@
 			var lis = "";
 			var data = this.arr;
 			for (var i = 0; i < data.length; i++){
-				lis += "<li class='um-small'><a class='um-black' data-url = '"+data[i].url+"'><div class='um-delete'></div><img src='"+data[i].img+"' width=40 /><div class='f12 mt5'>"+data[i].label+"</div></a></li>"
+				lis += "<li class='um-small' data-mark='"+data[i].mark+"'><a class='um-black' data-url = '"+data[i].url+"'><div class='um-delete'></div><img src='"+data[i].img+"' width=40 /><div class='f12 mt5'>"+data[i].label+"</div></a></li>"
 			}
 			var sortableTemp = sortableTxtL + lis + more + sortableTxtR;
 			$(this.id).append(sortableTemp);
@@ -1068,12 +1064,16 @@
 			});
 		},
 		remove : function(){
+			var _this = this;
 			$(".um-delete").on("touchstart",function(){
-				
+				var mark = $(this).parents(".um-small").attr("data-mark");
+				_this.setAppLabel(mark);
 				$(this).parents(".um-small").remove();
+				
 				return false;
 			});
 		},
+		
 		setCss : function(){
 			var w = $(this.id).width() / this.colum;
 			$(".um-small").css("width",w);
@@ -1087,32 +1087,52 @@
 		        });
 			});
 			$('#um-PageNav').onePageNav();
+			//this.checked()
+			$(".um-back").on('click', $.proxy(this.back, this));
+		},
+		setAppLabel : function(id){
+			$(".um-listview-row").each(function(){
+				if (id == $(this).attr("data-mark")){
+					$(this).find("input").prop("checked",false);
+				}
+			});
+		},
+		checked : function(){
+			$("#um-applistScroll").on("change","input",function(){
+				var mark = $(this).parents(".um-listview-row").attr("data-mark");
+				if ($(this).prop("checked")){
+					alert(mark)
+				}
+			})
+		},
+		back : function(){
+			var _this = this;
+			_this.labelArr.splice(0,_this.labelArr.length);  
+			$("#um-applistScroll input").each(function(){
+				if ($(this).prop("checked")){
+					var parents = $(this).parents(".um-listview-row");
+					var mark = parents.attr("data-mark");
+					var label = parents.find("h4").html();
+					var img = parents.find("img").attr("src");
+					var url = parents.find("a").attr("href");
+					var json = {"mark":mark,"label":label,"img":img,"url":url}
+					_this.labelArr.push(json);
+				}
+			});
+			this.arr = this.labelArr;
+			$(this.id).html("");
+			this.create();
+			UM.page.back();
+			
 		}
+		
 	}
-	$.fn.vvv = function(options) {
+	$.fn.APPManager = function(options) {
 		return this.each(function() {
 			new APPManager(this,options);
 		});
 	};
 })( jQuery, window , document );
-/*
- * jQuery One Page Nav Plugin
- * http://github.com/davist11/jQuery-One-Page-Nav
- *
- * Copyright (c) 2010 Trevor Davis (http://trevordavis.net)
- * Dual licensed under the MIT and GPL licenses.
- * Uses the same license as jQuery, see:
- * http://jquery.org/license
- *
- * @version 3.0.0
- *
- * Example usage:
- * $('#nav').onePageNav({
- *   currentClass: 'current',
- *   changeHash: false,
- *   scrollSpeed: 750
- * });
- */
 
 ;(function($, window, document, undefined){
 
@@ -1170,9 +1190,9 @@
 			this.$win.on('resize.onePageNav', $.proxy(this.getPositions, this));
 			//
 			this.getHeight();
+			//this.flowScroll();
 			return this;
 		},
-
 		adjustNav: function(self, $parent) {
 			self.$elem.find('.' + self.config.currentClass).removeClass(self.config.currentClass);
 			$parent.addClass(self.config.currentClass);
@@ -1297,7 +1317,6 @@
 				}
 			}
 		},
-
 		scrollTo: function(target, callback) {
 			var offset = this.height[target];
 

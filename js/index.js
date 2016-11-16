@@ -20,11 +20,11 @@
 		]
     });
     /*
-    var j = {"deviceid":"D8YDU15A31007455868753026659495","os":"web","userid":"dzk"};
-	var s = $summer.jsonToStr(j);
+    var emmJson = {"deviceid":"D8YDU15A31007455868753026659495","os":"web","userid":"dzk"};
+	var s = $summer.jsonToStr(emmJson);
 	var param = {data: s};
 	$.get("http://172.20.7.98:8080/mobem/app/getapplist",param,function(data){
-		
+		//获取应用列表后的处理
 		var d = ($summer.strToJson(data)).data.apps.remove(0);
 		for (var i =0;i<d.length;i++){
 			d[i].img = d[i].webiconurl;
@@ -41,36 +41,43 @@
 	workbench.createComponent("um-APPManager",{
 		el:"#uappmanager",
 		data:[{
+			"mark":"xbj",
 			"label" : "询报价",
 			"img" : "img/xbj.png",
 			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
-		{
+		{	
+			"mark":"ztb",
 			"label" : "招投标",
 			"img" : "img/ztb.png",
 			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
+			"mark":"cs",
 			"label" : "超市",
 			"img" : "img/cs.png",
 			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
+			"mark":"jj",
 			"label" : "在线竞价",
 			"img" : "img/jj.png",
 			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
+			"mark":"zr",
 			"label" : "供应商准入",
 			"img" : "img/zr.png",
 			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
+			"mark":"sh",
 			"label" : "收获",
 			"img" : "img/sh.png",
 			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
 		},
 		{
+			"mark":"dz",
 			"label" : "对账",
 			"img" : "img/dz.png",
 			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
@@ -94,7 +101,131 @@
 			 
 		]}
 	);
-	
+	//点击更多
+	workbench.createComponent("um-application",{
+		data:[
+			{
+				"title":"应用",
+				"arr":[
+					{
+						"label" : "询报价",
+						"img" : "img/xbj.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "招投标",
+						"img" : "img/ztb.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "超市",
+						"img" : "img/cs.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "在线竞价",
+						"img" : "img/jj.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "供应商准入",
+						"img" : "img/zr.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "收获",
+						"img" : "img/sh.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "对账",
+						"img" : "img/dz.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					}
+				]
+			},
+			{
+				"title":"对账",
+				"arr":[
+					{
+						"label" : "询报价",
+						"img" : "img/xbj.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "招投标",
+						"img" : "img/ztb.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "超市",
+						"img" : "img/cs.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "在线竞价",
+						"img" : "img/jj.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "供应商准入",
+						"img" : "img/zr.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "收获",
+						"img" : "img/sh.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "对账",
+						"img" : "img/dz.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					}
+				]
+			},
+			{
+				"title":"采购需求",
+				"arr":[
+					{
+						"label" : "询报价",
+						"img" : "img/xbj.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "招投标",
+						"img" : "img/ztb.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "超市",
+						"img" : "img/cs.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "在线竞价",
+						"img" : "img/jj.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "供应商准入",
+						"img" : "img/zr.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "收获",
+						"img" : "img/sh.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					},
+					{
+						"label" : "对账",
+						"img" : "img/dz.png",
+						"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
+					}
+				]
+			},
+		]
+	});
 	workbench.createComponent("um-items",{
 		data:[
 			{

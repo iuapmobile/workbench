@@ -62,8 +62,10 @@ var workbench = {
     		});
     		islider2.addDot();
 		}else if(type == 'um-APPManager'){
-			$(settings.el).vvv(settings);
+			$(settings.el).APPManager(settings);
 			//var v = new APPManager(settings.el,settings);
+		}else if(type == 'um-application'){
+			//$(settings.el).APPManager(settings);
 		}else if(type == "um-footer"){
 		    // 定义
 			var footer = Vue.extend({
