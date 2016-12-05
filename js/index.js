@@ -38,7 +38,7 @@
 		});
 	});
 	*/
-	workbench.createComponent("um-APPManager",{
+	workbench.createComponent("um-appmanager",{
 		el:"#uappmanager",
 		data:[{
 			"mark":"xbj",
@@ -81,8 +81,7 @@
 			"label" : "对账",
 			"img" : "img/dz.png",
 			"url" : "http://uapma.yonyou.com:8443/weixin/summerShow_web/index.html"
-		}],
-		colum : 4
+		}]
 	});
 	
 	workbench.createComponent("um-footer-custom", {

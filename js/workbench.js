@@ -15,7 +15,7 @@ var workbench = {
     						+'</a>'
            					+' <div class="um-input-group">'
 	         				+'<span class="t-search"></span>'
-	         				+'<input type="search" class="form-control" placeholder="{{aa}}">'
+	         				+'<input type="search" class="form-control" :placeholder="aa">'
 	         				+'<span class="t-camera"></span>'
            				    +'</div>'
     						+'</div>',
@@ -61,8 +61,19 @@ var workbench = {
     			animateTime: 800
     		});
     		islider2.addDot();
-		}else if(type == 'um-APPManager'){
-			$(settings.el).APPManager(settings);
+		}else if(type == 'um-appmanager'){
+			var APPManager = Vue.extend({
+				template : '<div id="uappmanager"></div>',
+				
+				mounted : function(){
+					//alert(111)
+					//alert(el)
+					$(settings.el).APPManager(settings);
+				}
+			});
+			// 注册
+			Vue.component('um-appmanager', APPManager);
+			//$(settings.el).APPManager(settings);
 			//var v = new APPManager(settings.el,settings);
 		}else if(type == 'um-application'){
 			//$(settings.el).APPManager(settings);
@@ -180,14 +191,14 @@ var workbench = {
 			var AppText = Vue.extend({
 				template: '<div class="ncontent" >'
 							+'<div class="alist fl um-grid" v-for="list in lists">'
-								+'<a href="{{list.url}}">'
+								+'<a :href="list.url">'
 									+'<div class="title tc">{{list.text}}</div>'
 									+'<div class="f12 mt5 tc">{{list.title}}</div>'
 								+'</a>'
 							+'</div>'
 							+'<div class="alist fl um-grid nphoto">'
 								+'<a href="#toDo">'
-									+'<img src="img/add.png"/ width=20>'
+									+'<img src="img/add.png" style="width:20px">'
 								+'</a>'
 							+'</div>'
 						 +'</div>',							 
@@ -204,13 +215,13 @@ var workbench = {
 				template:'<div class="um-items">'
 						 +'<ul class="clearfix">'
 						 +'<li v-for="list in gridlist">'
-	                         +'<a href="{{list.url}}" class="um-circle um-grey">'
+	                         +'<a :href="list.url" class="um-circle um-grey">'
 	                         	+'<img v-bind:src="list.img" width=40 class="um-img-responsive" alt="">'
 	                         	+'<div class="f12 mt5">{{list.text}}</div>'
 	                         +'</a>'
                          +'</li>'
                          +'<li>'
-	                         +'<a href="{{more.url}}" class="um-circle um-grey">'
+	                         +'<a :href="more.url" class="um-circle um-grey">'
 	                         	+'<img v-bind:src="more.img" width=40 class="um-img-responsive" alt="">'
 	                         	+'<div class="f12 mt5">{{more.text}}</div>'
 	                         +'</a>'
@@ -232,7 +243,7 @@ var workbench = {
 						 +'<div class="t"><span class="f14 um-grey">{{classifytit}}</span></div>'
 						 +'<ul>'
 						 +'<li v-for="list in classifylist">'
-	                         +'<a href="{{list.url}}" class="um-circle um-grey">'
+	                         +'<a :href="list.url" class="um-circle um-grey">'
 	                         	+'<img v-bind:src="list.img" width=40 class="um-img-responsive" alt="">'
 	                         	+'<div class="f14 mt5">{{list.text}}</div>'
 	                         +'</a>'
@@ -253,7 +264,7 @@ var workbench = {
 				template: '<div class="um-listview-wrap" id="listview">'
                      	+'<ul class="um-list um-no-active"  >'
                      		+'<li class="um-listview-row" v-for="list in lists">'
-                     			+'<a href="{{list.url}}" class="um-list-item um-swipe-action um-no-icon">'
+                     			+'<a :href="list.url" class="um-list-item um-swipe-action um-no-icon">'
                      				+'<div class="um-swipe-btns">'
                      					+'<span class="um-swipe-btn um-delete">删除</span>'
                      				+'</div>'
