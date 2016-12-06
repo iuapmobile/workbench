@@ -56,16 +56,6 @@ var workbench = {
 		    			animateTime: 800
 		    		});
 		    		islider.addDot();
-		    		var islider2 = new iSlider({
-		    			type: 'pic',
-		    			data: settings.data,
-		    			dom: document.getElementById("iSlider-wrapper2"),
-		    			isLooping: true,
-		    			animateType: 'default',
-		    			isAutoplay: true,
-		    			animateTime: 800
-		    		});
-		    		islider2.addDot();
 			    }
 			});
 			// 注册
