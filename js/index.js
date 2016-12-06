@@ -38,12 +38,7 @@
 		});
 	});
 	*/
-	$.get("http://10.1.78.40:8080/practice/abc/getInfo",function(data){
-		alert(data)
-	});
-	$.get("http://10.1.78.40:8080/practice/abc/getData",function(data){
-		alert(data)
-	});
+
 	workbench.createComponent("um-appmanager",{
 		el:"#uappmanager",
 		data:[{
