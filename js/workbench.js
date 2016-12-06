@@ -41,26 +41,36 @@ var workbench = {
 			// 注册
 			Vue.component('um-header-text', headertext);
 		}else if (type == "um-banner"){
-			var islider = new iSlider({
-    			type: 'pic',
-    			data: settings.data,
-    			dom: document.getElementById("iSlider-wrapper"),
-    			isLooping: true,
-    			animateType: 'default',
-    			isAutoplay: true,
-    			animateTime: 800
-    		});
-    		islider.addDot();
-    		var islider2 = new iSlider({
-    			type: 'pic',
-    			data: settings.data,
-    			dom: document.getElementById("iSlider-wrapper2"),
-    			isLooping: true,
-    			animateType: 'default',
-    			isAutoplay: true,
-    			animateTime: 800
-    		});
-    		islider2.addDot();
+			var slider = Vue.extend({
+				template : '<div class="um-row">'
+					      +'<div id="iSlider-wrapper" class="iSlider-wrapper"></div>'
+					      +'</div>',
+			    mounted : function(){
+			    	var islider = new iSlider({
+		    			type: 'pic',
+		    			data: settings.data,
+		    			dom: document.getElementById("iSlider-wrapper"),
+		    			isLooping: true,
+		    			animateType: 'default',
+		    			isAutoplay: true,
+		    			animateTime: 800
+		    		});
+		    		islider.addDot();
+		    		var islider2 = new iSlider({
+		    			type: 'pic',
+		    			data: settings.data,
+		    			dom: document.getElementById("iSlider-wrapper2"),
+		    			isLooping: true,
+		    			animateType: 'default',
+		    			isAutoplay: true,
+		    			animateTime: 800
+		    		});
+		    		islider2.addDot();
+			    }
+			});
+			// 注册
+			Vue.component('um-banner', slider);
+			
 		}else if(type == 'um-appmanager'){
 			var APPManager = Vue.extend({
 				template : '<div id="uappmanager"></div>',
