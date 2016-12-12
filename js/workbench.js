@@ -114,32 +114,69 @@ var workbench = {
 		}else if(type == "um-footer-custom"){
 		    // 定义
 			var footerCustom = Vue.extend({
-			  template: '<div class="um-footer">'
-                    +'<div class="um-footerbar">'
-                        +'<a href="#" class="um-footerbar-item active" data-tar="' + settings.data[0].target + '">'
-                            +'<div class="' + settings.data[0].iconfont + ' mb5"></div>'
-                            +'<div class="f14 lh1">{{first}}</div>'
-                        +'</a>'
-                        +'<a href="#" class="um-footerbar-item" data-tar="' + settings.data[1].target + '">'
-                            +'<div class="' + settings.data[1].iconfont + ' mb5"></div>'
-                            +'<div class="f14 lh1">{{second}}</div>'
-                        +'</a>'
-                        +'<a href="#" class="um-footerbar-item" data-tar="' + settings.data[2].target + '">'
-                            +'<div class="' + settings.data[2].iconfont + ' mb5"></div>'
-                            +'<div class="f14 lh1">{{third}}</div>'
-                        +'</a>'
-                        +'<a href="#" class="um-footerbar-item" data-tar="' + settings.data[3].target + '">'
-                            +'<div class="' + settings.data[3].iconfont + ' mb5"></div>'
-                            +'<div class="f14 lh1">{{forth}}</div>'
+                 template: '<div class="um-footer">'
+                    +'<div class="um-footerbar" >'
+                        +'<a v-for="x in footerbars" href="#" :class="x.item" :data-tar="x.tar" v-on:click="onFooterItemClick">'
+                            +'<div :class="x.iconfont" :style="x.styleObject"></div>'
+                            +'<div class="f14 lh1">{{x.title}}</div>'
                         +'</a>'
                     +'</div>'
                 +'</div>',
 				data : function(){
 					return {
-						first: settings.data[0].title,
-						second: settings.data[1].title,
-						third: settings.data[2].title,
-						forth: settings.data[3].title
+						footerbar_item: 'um-footerbar-item',
+						footerbars:[]
+					}
+				},
+				beforeCreate: function(){
+				},
+				created: function(){
+					for(var i=0,len=settings.data.length;i<len;i++){
+						this.footerbars.push({
+							item: settings.index == i ? this.footerbar_item + " active" : this.footerbar_item,
+							title: settings.data[i].title,
+							icon: settings.data[i].icon,
+							iconActive: settings.data[i].iconActive,
+							tar: settings.data[i].target,
+							styleObject: {
+							    height: '22px',
+							  	backgroundPosition: 'center center',
+							  	backgroundRepeat:'no-repeat', 
+							  	backgroundSize:'22px 22px',
+
+							    backgroundImage: 'url(' + (settings.index == i ? settings.data[i].iconActive : settings.data[i].icon) + ')'
+							},
+							iconfont:"mb5"
+						});
+					}
+				},
+				methods:{
+					onFooterItemClick: function(args){
+						//debugger;
+						var srcElement = args.currentTarget;
+						var i = this.activeIdx(srcElement);
+
+						for(var j=0,len=this.footerbars.length;j<len;j++){
+							this.footerbars[j].item = this.footerbars[j].item.replace(/active/g, '');
+							this.footerbars[j].styleObject.backgroundImage = 'url(' + this.footerbars[j].icon + ')';
+							
+							document.querySelector(this.footerbars[j].tar).className = document.querySelector(this.footerbars[j].tar).className.replace(/active/g, '');
+						}
+						this.footerbars[i].item +=' active'; 
+						this.footerbars[i].styleObject.backgroundImage = 'url(' + this.footerbars[i].iconActive + ')';
+						
+
+						document.querySelector(this.footerbars[i].tar).className +=" active";
+
+						return true;
+					},
+					activeIdx: function(srcElement){
+						var list = srcElement.parentElement.children;
+						for(var i=0,len=list.length;i<len;i++){
+							if(list[i] == srcElement)
+								return i;
+						}
+						return -1;
 					}
 				}
 			});

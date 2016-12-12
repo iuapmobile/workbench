@@ -114,121 +114,32 @@ var workbench = {
 		}else if(type == "um-footer-custom"){
 		    // 定义
 			var footerCustom = Vue.extend({
-			  template1: '<div class="um-footer">'
+			  template: '<div class="um-footer">'
                     +'<div class="um-footerbar">'
-                        +'<a href="#" :class="[um_footerbar_item, A1_active]" data-tar="' + settings.data[0].target + '" v-on:click="increment">'
-                            +'<div class="mb5" v-bind:style="styleObject"></div>'
+                        +'<a href="#" class="um-footerbar-item active" data-tar="' + settings.data[0].target + '">'
+                            +'<div class="' + settings.data[0].iconfont + ' mb5"></div>'
                             +'<div class="f14 lh1">{{first}}</div>'
                         +'</a>'
-                        +'<a href="#" :class="[um_footerbar_item, A2_active]" data-tar="' + settings.data[1].target + '" v-on:click="increment">'
+                        +'<a href="#" class="um-footerbar-item" data-tar="' + settings.data[1].target + '">'
                             +'<div class="' + settings.data[1].iconfont + ' mb5"></div>'
                             +'<div class="f14 lh1">{{second}}</div>'
                         +'</a>'
-                        +'<a href="#" :class="[um_footerbar_item, A3_active]" data-tar="' + settings.data[2].target + '" v-on:click="increment">'
+                        +'<a href="#" class="um-footerbar-item" data-tar="' + settings.data[2].target + '">'
                             +'<div class="' + settings.data[2].iconfont + ' mb5"></div>'
                             +'<div class="f14 lh1">{{third}}</div>'
                         +'</a>'
-                        +'<a href="#" :class="[um_footerbar_item, A4_active]" data-tar="' + settings.data[3].target + '" v-on:click="increment">'
+                        +'<a href="#" class="um-footerbar-item" data-tar="' + settings.data[3].target + '">'
                             +'<div class="' + settings.data[3].iconfont + ' mb5"></div>'
                             +'<div class="f14 lh1">{{forth}}</div>'
                         +'</a>'
                     +'</div>'
                 +'</div>',
-                 template: '<div class="um-footer">'
-                    +'<div class="um-footerbar" >'
-                        +'<a v-for="x in footerbars" href="#" :class="x.item" data-tar="' + settings.data[0].target + '" v-on:click="increment">'
-                            +'<div class="mb5"></div>'
-                            +'<div class="f14 lh1">{{x.title}}</div>'
-                        +'</a>'
-                    +'</div>'
-                +'</div>',
 				data : function(){
 					return {
-						x_item:"um-footerbar-item",
-						footerbars: [{
-							item: 'um-footerbar-item active',
-							title:'消息',
-							styleObject: {
-							    height: '22px',
-							  	backgroundPosition: 'center center',
-							  	backgroundRepeat:'no-repeat', 
-							  	backgroundSize:'22px 22px',
-
-							    backgroundImage: 'url(img/home-25-active.png)',
-							}
-						},{
-							item: 'um-footerbar-item',
-							title:'商品1',
-							styleObject: {
-							    height: '22px',
-							  	backgroundPosition: 'center center',
-							  	backgroundRepeat:'no-repeat', 
-							  	backgroundSize:'22px 22px',
-
-							    backgroundImage: 'url(img/home-25-active.png)',
-							}
-
-						},{
-							item: 'um-footerbar-item',
-							title:'商品2',
-							styleObject: {
-							    height: '22px',
-							  	backgroundPosition: 'center center',
-							  	backgroundRepeat:'no-repeat', 
-							  	backgroundSize:'22px 22px',
-
-							    backgroundImage: 'url(img/home-25-active.png)',
-							}
-
-						},{
-							item: 'um-footerbar-item',
-							title:'商品',
-							styleObject: {
-							    height: '22px',
-							  	backgroundPosition: 'center center',
-							  	backgroundRepeat:'no-repeat', 
-							  	backgroundSize:'22px 22px',
-
-							    backgroundImage: 'url(img/home-25-active.png)',
-							}
-
-						}],
 						first: settings.data[0].title,
 						second: settings.data[1].title,
 						third: settings.data[2].title,
-						forth: settings.data[3].title,
-						
-						um_footerbar_item: "um-footerbar-item",
-						A1_active: "active",
-							A2_active: false,
-							A3_active: false,
-							A4_active: false
-					}
-				},
-				methods:{
-					increment:function(args){
-						debugger;
-						var srcElement = args.currentTarget;
-						var list = args.currentTarget.parentElement.children
-
-						for(var i=0,len=list.length;i<len;i++){
-							list[i].className = list[i].className.replace(/ active/g, '');
-						}
-
-						srcElement.className += " active";
-						this.styleObject.backgroundImage = 'url(img/home-25.png)';
-return;
-						this.A1_active = '';
-						this.A2_active = "active";
-						this.A3_active = '';
-						this.A4_active = '';
-						return;
-						/*
-						$(srcElement).addClass('active').siblings('.active').removeClass('active');
-						var tar=$(srcElement).attr('data-tar');
-						$(tar).addClass('active').siblings('.active').removeClass('active');	
-						this.styleObject.backgroundImage = 'url(img/home-25-active.png)'
-*/
+						forth: settings.data[3].title
 					}
 				}
 			});

@@ -1,4 +1,5 @@
 /* 设置背景图片 */
+/*
 .icon-home, .icon-msg, .icon-goods,.icon-mine {
     height: 22px;  
   background-position: center center;
@@ -17,7 +18,9 @@
 .icon-mine {
     background-image: url(../img/mine-25.png);
 }
+*/
 /* 设置激活状态 */
+/*
 .um-footerbar-item.active .icon-home {
     background-image: url(../img/home-25-active.png);
 }
@@ -30,12 +33,21 @@
 .um-footerbar-item.active .icon-mine {
     background-image: url(../img/mine-25-active.png);
 }
+
+*/
+
+
 .um-footerbar-item.active {
     color: rgba(241, 90, 74, 1);
 }
 .um-footerbar-item{
 	padding-top:3.5px;
 }
+
+
+
+
+
 #article>div{display:none;text-align:center;}
 #article>div.active{display:block;}
 #home .um-grid-row  a  div{
