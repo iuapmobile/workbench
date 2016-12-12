@@ -1,5 +1,10 @@
 ﻿   /*底部导航栏与4个内容区域切换*/
 	$(function(){
+		$('.um-footerbar>a').click(function(){
+				$(this).addClass('active').siblings('.active').removeClass('active');
+				var tar=$(this).attr('data-tar');
+				$(tar).addClass('active').siblings('.active').removeClass('active');	
+		});	
 	});	
 	workbench.createComponent("um-header", {placeholder:"搜订单/商品"});
 	workbench.createComponent("um-header-text", {
@@ -81,11 +86,10 @@
 	});
 	
 	workbench.createComponent("um-footer-custom", {
-		index: 0,
-		data: [{title:"首页",target:'#home',icon:"img/home-25.png",iconActive:"img/home-25-active.png",styleObject:{paddingTop:'3.5px',color: 'rgba(241, 90, 74, 1)'}, onclick:'' },
-			{title:"消息", target:'#message',icon:"img/msg-25.png",iconActive:"img/msg-25-active.png", styleObject:{paddingTop:'3.5px',color: 'rgba(241, 90, 74, 1)'}, onclick:'' },
-			{title:"商品", target:'#goods',icon:"img/goods-25.png",iconActive:"img/goods-25-active.png",styleObject:{paddingTop:'3.5px',color: 'rgba(241, 90, 74, 1)'}, onclick:''},
-			{title:"我的", target:'#mine',icon:"img/mine-25.png",iconActive:"img/mine-25-active.png", styleObject:{paddingTop:'3.5px',color: 'rgba(241, 90, 74, 1)'}, onclick:''}
+		data: [{title:"首页", iconfont:"icon-home",target:'#home' },
+			{title:"消息", iconfont:"icon-msg",target:'#message' },
+			{title:"商品", iconfont:"icon-goods",target:'#goods'},
+			{title:"我的", iconfont:"icon-mine",target:'#mine'}
 		]}
 	);
 	workbench.createComponent("um-layout-text", {
@@ -397,7 +401,7 @@
         		}                        
 		]}
 	);
-var rootVue = new Vue({
+new Vue({
   	el: '#body0',
   	data: {
     	info: 'Hello iuap mobile!',
